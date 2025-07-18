@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../assets/footer logo.png";
-import { FacebookIcon } from 'lucide-react';
+import { FacebookIcon,LinkedinIcon, TwitterIcon, InstagramIcon } from 'lucide-react';
 
 
 const FooterNew = () => {
@@ -16,9 +16,9 @@ const FooterNew = () => {
                 <img src={logo} alt='footer logo' />
                 <div className='flex gap-4 mt-5'>
                     <FacebookIcon />
-                    <FacebookIcon />
-                    <FacebookIcon />
-                    <FacebookIcon />
+                    <LinkedinIcon />
+                    <TwitterIcon />
+                    <InstagramIcon />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import joinUs from "../assets/Frame 1686560647.png";
 import backgroundImage from "../assets/image 3.png";
 import Perks from '../components/Perks';
-import { DollarSignIcon } from 'lucide-react';
+import { BadgeDollarSignIcon, HeartPulse, Laptop, Boxes } from 'lucide-react';
 import JobBar from '../components/JobBar';
 import FooterNew from '../components/FooterNew';
 import { jobApplication } from '../components/Jobdata';
@@ -50,16 +50,16 @@ const JoinUs = () => {
        </div>
         <div className='grid grid-cols-1 md:grid-cols-2   gap-y-20 pb-10 pt-5 text-[#AAD468]'>
             <div>
-                <Perks icon={<DollarSignIcon/>} header={'Health and Well Being'} content={'HMO, Paid time off work up to 14 days, Gadget insurance.'}/>
+                <Perks icon={<BadgeDollarSignIcon size={40}/>} header={'Health and Well Being'} content={'HMO, Paid time off work up to 14 days, Gadget insurance.'}/>
             </div>
             <div>
-                <Perks icon={<DollarSignIcon/>} header={'Financial'} content={'Competitive salary, Stock options, Performance Bonuses, Salary Advance, Rent loans.'}/>
+                <Perks icon={<HeartPulse size={40}/>} header={'Financial'} content={'Competitive salary, Stock options, Performance Bonuses, Salary Advance, Rent loans.'}/>
             </div>
             <div>
-                <Perks icon={<DollarSignIcon/>} header={'Work-Life Integration '} content={'Flexible workstyles including hybrid and remote. '}/>
+                <Perks icon={<Laptop size={40}/>} header={'Work-Life Integration '} content={'Flexible workstyles including hybrid and remote. '}/>
             </div>
             <div>
-                <Perks icon={<DollarSignIcon/>} header={'Professional Development'} content={'Trainings and opportunities for skill development'}/>
+                <Perks icon={<Boxes size={40}/>} header={'Professional Development'} content={'Trainings and opportunities for skill development'}/>
             </div>
         </div>
 
