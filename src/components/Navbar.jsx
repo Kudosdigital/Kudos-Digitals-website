@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/Group 625860.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,9 +30,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-1">
           <div className="bg-slate-700/20 backdrop-blur-2xl border border-gray-500/50 rounded-full px-2 py-2 flex items-center space-x-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   item.active
                     ? "text-[#AAD468]"
@@ -40,19 +41,21 @@ const Navbar = () => {
                 aria-label={`Navigate to ${item.name}`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="flex items-center space-x-4">
-          <button
-            className="bg-[#AAD468] text-[#FEFEFE] px-6 py-2 rounded-full text-sm font-semibold hover:bg-lime-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-slate-800"
-            aria-label="Join us today"
-          >
-            Join us Today
-          </button>
+          <Link to={'joinUs'}>
+            <button
+              className="bg-[#AAD468] text-[#FEFEFE] px-6 py-2 rounded-full text-sm font-semibold hover:bg-lime-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-slate-800"
+              aria-label="Join us today"
+            >
+              Join us Today
+            </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
