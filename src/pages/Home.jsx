@@ -1,12 +1,13 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import Navbar from "../components/shared/Navbar";
+import Hero from "../components/home/Hero";
 import backgroundImage from "../assets/image 3.png";
-import CaseStudies from "../components/CaseStudies";
-import Services from "../components/Services";
-import WhyUs from "../components/WhyUs";
-import Team from "../components/Team";
-import ContactUs from "../components/ContactUs";
-import Footer from "../components/Footer";
+import CaseStudies from "../components/home/CaseStudies";
+import WhyUs from "../components/home/WhyUs";
+import Team from "../components/home/Team";
+import Footer from "../components/shared/Footer";
+import Stats from "../components/home/Stats";
+import OurDna from "../components/home/OurDna";
+import Testimonials from "../components/home/Testimonials";
 
 const Home = () => {
   return (
@@ -33,10 +34,11 @@ const Home = () => {
         <Navbar />
         <Hero />
         <CaseStudies />
-        <Services />
         <WhyUs />
         <Team />
-        <ContactUs />
+        <Stats />
+        <OurDna />
+        <Testimonials />
         <Footer />
       </div>
     </main>
