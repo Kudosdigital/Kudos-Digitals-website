@@ -347,7 +347,7 @@ const TeamSection = () => {
           </div>
 
           {/* Our Story Card */}
-          <div className="bg-[#AAD468] h-80 sm:h-auto rounded-3xl p-6 sm:p-8 h-72 sm:h-80 relative overflow-hidden">
+          <div className="bg-[#AAD468] h-80 sm:h-auto rounded-3xl p-6 sm:p-8 relative overflow-hidden">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-3 sm:gap-0">
               <h2 className="text-gray-900 text-2xl sm:text-3xl font-bold">
                 Our Story

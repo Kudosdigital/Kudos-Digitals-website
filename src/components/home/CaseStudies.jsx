@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import image1 from "../../assets/TYUL.jpg";
-import image2 from "../../assets/GALLIVANTER RELAUNCH - Artboard 2 1.png";
+import image2 from "../../assets/6.jpg";
 import image3 from "../../assets/CEA.jpg";
 import circle1 from "../../assets/Ellipse 37.png";
 import circle2 from "../../assets/Ellipse 38.png";

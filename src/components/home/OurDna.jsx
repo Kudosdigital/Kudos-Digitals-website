@@ -14,9 +14,9 @@ const OurDna = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, y: 30 },
+        { autoAlpha: 0, y: 30 },
         {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           duration: 1,
           ease: "power2.out",
@@ -29,9 +29,9 @@ const OurDna = () => {
 
       gsap.fromTo(
         leftColumnRef.current,
-        { opacity: 0, x: -100 },
+        { autoAlpha: 0, x: -100 },
         {
-          opacity: 1,
+          autoAlpha: 1,
           x: 0,
           duration: 1,
           ease: "power3.out",
@@ -45,9 +45,9 @@ const OurDna = () => {
 
       gsap.fromTo(
         rightColumnRef.current,
-        { opacity: 0, x: 100 },
+        { autoAlpha: 0, x: 100 },
         {
-          opacity: 1,
+          autoAlpha: 1,
           x: 0,
           duration: 1,
           ease: "power3.out",
@@ -69,9 +69,12 @@ const OurDna = () => {
       className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
     >
       {/* Section Title */}
-      <div ref={titleRef} className="w-full pb-6 text-center z-10">
+      <div
+        ref={titleRef}
+        className="w-full pb-6 text-center z-10 will-change-transform"
+      >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3">
-          What <span className="text-[#C6FF7F]"> is imprinted in our DNA?</span>
+          What <span className="text-[#C6FF7F]">is imprinted in our DNA?</span>
         </h2>
         <p className="text-white text-sm sm:text-base max-w-2xl mx-auto">
           At Kudos Digitals Agency, we believe in fostering a culture of
@@ -81,7 +84,7 @@ const OurDna = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
         {/* Left Column */}
-        <div ref={leftColumnRef} className="space-y-6">
+        <div ref={leftColumnRef} className="space-y-6 will-change-transform">
           {/* Mission Card */}
           <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-white flex flex-col">
             <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold mb-2">
@@ -110,7 +113,7 @@ const OurDna = () => {
         {/* Right Column */}
         <div
           ref={rightColumnRef}
-          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-white overflow-y-auto"
+          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-white overflow-y-auto will-change-transform"
         >
           <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold">
             Our Values

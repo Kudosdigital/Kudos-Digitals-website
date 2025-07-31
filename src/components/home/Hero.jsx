@@ -100,9 +100,9 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
         {/* Top Banner */}
         <div ref={subtitleRef} className="flex justify-center mb-12">
-          <div className="bg-linear-to-r from-[#AAD468]/60 to-[#495B2D99]/20 backdrop-blur-2xl rounded-full px-6 py-3 border border-white/50">
+          <div className="bg-linear-to-r from-[#AAD468]/60 to-[#495B2D99]/20 backdrop-blur-2xl rounded-full px-6 py-3 border border-white/50 max-w-full">
             <div className="flex items-center space-x-3 text-white font-semibold group">
-              <span className="text-sm">
+              <span className="text-sm truncate overflow-hidden whitespace-nowrap max-w-[200px] sm:max-w-none">
                 Kudos Digitals delivers user-centric solutions that convert.
               </span>
               <span className="bg-[#AAD468] p-2 rounded-full group-hover:translate-x-1 transition-transform duration-300">

@@ -8,6 +8,7 @@ import Footer from "../components/shared/Footer";
 import Stats from "../components/home/Stats";
 import OurDna from "../components/home/OurDna";
 import Testimonials from "../components/home/Testimonials";
+import BackToTop from "../components/shared/BackToTop";
 
 const Home = () => {
   return (
@@ -41,6 +42,8 @@ const Home = () => {
         <Testimonials />
         <Footer />
       </div>
+
+      <BackToTop />
     </main>
   );
 };

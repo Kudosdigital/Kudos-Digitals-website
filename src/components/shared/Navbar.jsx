@@ -1,45 +1,42 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/Group 625860.png";
 
-const Navbar = () => {
+const Navbar = ({ className = "" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
-
-  useEffect(() => {
-    const el = mobileMenuRef.current;
-    if (el) {
-      el.style.maxHeight = isMobileMenuOpen ? el.scrollHeight + "px" : "0px";
-      el.style.opacity = isMobileMenuOpen ? "1" : "0";
-    }
-  }, [isMobileMenuOpen]);
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Our Work", path: "/joinUs" },
-    { name: "Our Brand", path: "/brand" },
+    { name: "Our Work", path: "/ourWork" },
+    { name: "Our Brand", path: "/joinUs" },
     { name: "Our Story", path: "/story" },
     { name: "Contact Us", path: "/contact" },
   ];
 
   const navLinkClasses = ({ isActive }) =>
-    `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+    `block px-4 py-2 rounded-full text-sm font-black transition-all duration-200 ${
       isActive
-        ? "text-[#AAD468]"
-        : "text-gray-300 hover:text-white hover:bg-slate-600/50"
+        ? `${
+            className === "bg-[#FAFEF3]" ? "text-[#002424]" : "text-[#AAD468]"
+          }`
+        : "text-[#8AA1A1] hover:underline font-medium"
     }`;
 
   return (
-    <nav className="px-4 py-6 lg:px-8 relative z-50">
+    <nav className={`${className} px-4 py-6 lg:px-8 relative z-50`}>
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <div>
-          <img className="w-25" src={logo} alt="Kudos Digital Agency Logo" />
-        </div>
+        <img className="w-24" src={logo} alt="Kudos Digital Agency Logo" />
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-1">
-          <div className="bg-slate-700/20 backdrop-blur-2xl border border-gray-500/50 rounded-full px-2 py-2 flex items-center space-x-1">
+          <div
+            className={`${
+              className === "bg-[#FAFEF3]"
+                ? ""
+                : "bg-slate-700/20 backdrop-blur-2xl border border-gray-500/50 rounded-full"
+            } px-2 py-2 flex items-center space-x-1`}
+          >
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
@@ -52,9 +49,15 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* CTA + Toggle */}
+        {/* CTA + Hamburger */}
         <div className="flex items-center space-x-4">
-          <button className="bg-[#AAD468] hidden lg:flex text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold hover:bg-lime-300 transition-colors duration-200">
+          <button
+            className={`hidden lg:flex ${
+              className === "bg-[#FAFEF3]"
+                ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                : "bg-[#AAD468] hover:bg-lime-300"
+            }  text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+          >
             Share Your Idea
           </button>
 
@@ -67,12 +70,21 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (Animated) */}
+      {/* Mobile Menu with slide animation */}
       <div
-        ref={mobileMenuRef}
-        className="lg:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0"
+        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen
+            ? "max-h-[500px] opacity-100 mt-4"
+            : "max-h-0 opacity-0"
+        }`}
       >
-        <div className="bg-slate-700/20 backdrop-blur-2xl border border-gray-500/50 rounded-2xl p-4 mt-4 space-y-2">
+        <div
+          className={`${
+            className === "bg-[#FAFEF3]"
+              ? ""
+              : "bg-slate-700/20 backdrop-blur-2xl "
+          } p-4 space-y-3 border border-gray-500/50 rounded-2xl`}
+        >
           {navItems.map((item) => (
             <NavLink
               key={item.name}
@@ -83,7 +95,13 @@ const Navbar = () => {
               {item.name}
             </NavLink>
           ))}
-          <button className="w-full bg-[#AAD468] text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold hover:bg-lime-300 transition-colors duration-200">
+          <button
+            className={`w-full ${
+              className === "bg-[#FAFEF3]"
+                ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                : "bg-[#AAD468] hover:bg-lime-300"
+            } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+          >
             Share Your Idea
           </button>
         </div>
