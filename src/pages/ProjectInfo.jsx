@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { users } from "./OurWork";
 import Navbar from "../components/shared/Navbar";
@@ -12,82 +11,95 @@ const ProjectInfo = () => {
     return <div className="text-white p-10">Project not found.</div>;
   }
 
+  const {
+    title,
+    category,
+    imageUrl,
+    about,
+    client,
+    imageUrl1,
+    imageUrl2,
+    imageUrl3,
+  } = project;
+
+  const noInfo = "No more information on this project";
+
+  const tags = [
+    "UI Design",
+    "Event Branding",
+    "Brand Identity",
+    "Website Design",
+    "Flyers & Banner Design",
+  ];
+
   return (
-    <div className="bg-[#F9F9F9] ">
-      <Navbar />
-      <div className="px-10">
-        <div>
-          <h3 className="text-[#161616] text-xl font-semibold">
-            Our Works/<span className="text-[#DBDBDB]">{project.category}</span>
-          </h3>
-          <h2 className="text-[#003333] mt-10 text-7xl font-bold">
-            {project.title}
-          </h2>
-          <p className="text-[#AAD468]  text-lg mt-2 font-semibold">
-            {project.category}
-          </p>
-          <img
-            src={project.imageUrl}
-            alt=""
-            className="h-[620px] my-10 rounded-2xl w-full"
-          />
-          <h3 className="text-3xl mb-3 text-[#002E2E]  font-semibold">
-            About Project
-          </h3>
-          {!project.about ? (
-            <p className="my-5 text-xl text-[#454545]  leading-10">
-              No more information on this project
-            </p>
-          ) : (
-            <div>
-              <p className="mt-5 text-xl text-[#454545]  leading-10">
-                {!project.about
-                  ? "No more information on this project"
-                  : project.about}
-              </p>
-              <div className="grid grid-cols-[60%_40%]   gap-5">
+    <div className="bg-[#F9F9F9] min-h-screen">
+      <Navbar className="bg-[#FAFEF3]" />
+
+      <div className="px-5 md:px-10 lg:px-20 py-10">
+        <h3 className="text-[#161616] text-sm md:text-lg font-semibold">
+          Our Works / <span className="text-[#DBDBDB]">{category}</span>
+        </h3>
+
+        <h2 className="text-[#003333] mt-4 md:mt-10 text-4xl md:text-6xl font-bold">
+          {title}
+        </h2>
+
+        <p className="text-[#AAD468] text-base md:text-lg mt-2 font-semibold">
+          {category}
+        </p>
+
+        <img
+          src={imageUrl}
+          alt={`${title} preview`}
+          className="w-full h-auto md:h-[620px] my-10 rounded-2xl object-cover object-top"
+        />
+
+        <h3 className="text-2xl md:text-3xl mb-3 text-[#002E2E] font-semibold">
+          About Project
+        </h3>
+
+        <p className="mt-5 text-base md:text-xl text-[#454545] leading-8">
+          {about || noInfo}
+        </p>
+
+        {(imageUrl1 || imageUrl2 || imageUrl3) && (
+          <div className="grid md:grid-cols-[60%_40%] gap-5 mt-10">
+            {imageUrl1 && (
+              <img
+                src={imageUrl1}
+                alt="Project visual 1"
+                className="w-full h-[400px] md:h-[600px] rounded-2xl object-contain"
+              />
+            )}
+            <div className="flex flex-col justify-between gap-5">
+              {imageUrl2 && (
                 <img
-                  src={project.imageUrl1}
-                  alt=""
-                  className=" h-[600px] my-10 rounded-2xl w-full"
+                  src={imageUrl2}
+                  alt="Project visual 2"
+                  className="w-full h-[200px] md:h-[280px] rounded-2xl object-contain"
                 />
-                <div>
-                  <img
-                    src={project.imageUrl2}
-                    alt=""
-                    className=" h-[280px] my-10 rounded-2xl w-full"
-                  />
-                  <img
-                    src={project.imageUrl3}
-                    alt=""
-                    className=" h-[280px] my-10 rounded-2xl w-full"
-                  />
-                </div>
-              </div>
-              <h3 className="text-[#002E2E] text-center text-5xl mt-20 font-semibold">
-                What our client say's
-              </h3>
-              <p className="my-10 text-xl text-[#454545] text-center leading-10">
-                {!project.client
-                  ? "No more information on this project"
-                  : project.client}
-              </p>
+              )}
+              {imageUrl3 && (
+                <img
+                  src={imageUrl3}
+                  alt="Project visual 3"
+                  className="w-full h-[200px] md:h-[280px] rounded-2xl object-contain"
+                />
+              )}
             </div>
-          )}
-        </div>
-      </div>
-      <div className="flex lg:px-20 px-3 py-7 mt-5 lg:text-xl md:text-sm text-[10px] font-medium justify-between text-[#001515] bg-[#AAD468] items-center">
-        <span>UI Design</span>
-        <span className="w-3 h-3 rounded-full bg-[#F9F871]"></span>
-        <span>Event Branding</span>
-        <span className="w-3 h-3 rounded-full bg-[#F9F871]"></span>
-        <span>Brand Identity</span>
-        <span className="w-3 h-3 rounded-full bg-[#F9F871]"></span>
-        <span>Website Design</span>
-        <span className="w-3 h-3 rounded-full bg-[#F9F871]"></span>
-        <span>Flyers & Banner Design</span>
+          </div>
+        )}
+
+        <h3 className="text-[#002E2E] text-center text-3xl md:text-5xl mt-20 font-semibold">
+          What our client says
+        </h3>
+        <p className="my-10 text-base md:text-xl text-[#454545] text-center leading-8">
+          {client || noInfo}
+        </p>
       </div>
 
+      {/* Footer */}
       <div className="bg-[#001C1C] text-[#F9F871]">
         <FooterNew />
       </div>

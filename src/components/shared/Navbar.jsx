@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/Group 625860.png";
+import alt_logo from "../../assets/altLogo.png";
 
 const Navbar = ({ className = "" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,7 +27,11 @@ const Navbar = ({ className = "" }) => {
   return (
     <nav className={`${className} px-4 py-6 lg:px-8 relative z-50`}>
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <img className="w-24" src={logo} alt="Kudos Digital Agency Logo" />
+        <img
+          className="w-24"
+          src={className === "bg-[#FAFEF3]" ? alt_logo : logo}
+          alt="Kudos Digital Agency Logo"
+        />
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-1">

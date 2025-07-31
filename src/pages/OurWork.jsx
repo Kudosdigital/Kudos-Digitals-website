@@ -55,7 +55,7 @@ export const users = [
     imageUrl1: seven,
     imageUrl2: eleven,
     imageUrl3: twelve,
-    title: "CAE",
+    title: "CEA",
     preview:
       "We created a dynamic visual identity and promotional materials to launch a symposium focused on building businesses in a challenging economy.",
   },
@@ -159,10 +159,7 @@ const OurWork = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-[#001C1C] text-[#F9F871]">
-        <FooterNew />
-      </div>
-
+      <FooterNew />
       <BackToTop />
     </div>
   );

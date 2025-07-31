@@ -21,10 +21,8 @@ const JoinUs = () => {
     >
       <div className="absolute inset-0  text-[#AAD468] z-0 pointer-events-none"></div>
       <div className="relative z-20 ">
-        <div className="bg-[#001515ec]">
-          <Navbar />
-        </div>
-        <div className="bg-[#001515]  flex flex-col justify-center items-center px-5 md:px-14 py-20">
+        <Navbar />
+        <div className="flex flex-col justify-center items-center px-5 md:px-14 py-20">
           <h2 className="md:text-6xl text-4xl md:text-center font-[800]">
             Grow Your Career with Kudos Digitals
           </h2>
