@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectInfo from "./pages/ProjectInfo";
+import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => import("./pages/Home"));
 const JoinUs = lazy(() => import("./pages/JoinUs"));
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="/ourWork" element={<OurWork />} />
           <Route path="/ourWork/:id" element={<ProjectInfo />} />
           <Route path="/joinUs/:id" element={<JobApplication />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </main>
