@@ -1,10 +1,25 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
-createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById("root"));
+
+root.render(
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+const removePreloader = () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.style.transition = "opacity 0.3s ease";
+    preloader.style.opacity = 0;
+    setTimeout(() => {
+      preloader.remove();
+    }, 300);
+  }
+};
+
+window.addEventListener("load", removePreloader);

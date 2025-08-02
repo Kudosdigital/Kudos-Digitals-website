@@ -342,7 +342,10 @@ const TeamSection = () => {
               ))}
             </div>
 
-            <button className="bg-gray-200 text-gray-800 px-4 sm:px-6 py-2 rounded-lg font-medium hover:bg-white transition-colors text-sm sm:text-base">
+            <button
+              aria-label="Join the Kudos Digitals team"
+              className="bg-gray-200 text-gray-800 px-4 sm:px-6 py-2 rounded-lg font-medium hover:bg-white transition-colors text-sm sm:text-base"
+            >
               Join us Today
             </button>
           </div>
@@ -353,7 +356,10 @@ const TeamSection = () => {
               <h2 className="text-gray-900 text-2xl sm:text-3xl font-bold">
                 Our Story
               </h2>
-              <button className="bg-[#002424] text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors self-start sm:self-auto">
+              <button
+                aria-label="Read the Kudos Digitals story"
+                className="bg-[#002424] text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors self-start sm:self-auto"
+              >
                 Read Our Story
               </button>
             </div>
@@ -403,12 +409,14 @@ const TeamSection = () => {
               {/* Navigation buttons */}
               <div className="absolute top-43 sm:top-45 -translate-y-1/2 left-0 right-0 flex justify-between px-2 pointer-events-none">
                 <button
+                  aria-label="Scroll story section left"
                   onClick={scrollStoryLeft}
                   className="pointer-events-auto  cursor-pointer bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
                 >
                   <ChevronLeft size={16} />
                 </button>
                 <button
+                  aria-label="Scroll story section right"
                   onClick={scrollStoryRight}
                   className="pointer-events-auto cursor-pointer bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
                 >

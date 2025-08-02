@@ -23,7 +23,7 @@ const Navbar = ({ className = "" }) => {
   const navLinkClasses = (itemPath) => {
     const isCurrent =
       location.pathname === itemPath ||
-      (itemPath === "/our_story" && location.pathname.startsWith("/articles"));
+      (itemPath === "/our-story" && location.pathname.startsWith("/articles"));
 
     return `block px-4 py-2 rounded-full text-sm font-black transition-all duration-200 ${
       isCurrent
@@ -42,7 +42,7 @@ const Navbar = ({ className = "" }) => {
   return (
     <>
       <nav className={`${className} px-4 py-6 lg:px-8 relative z-50`}>
-        <div className="flex items-center justify-between  mx-auto">
+        <div className="flex items-center justify-between mx-auto">
           <img
             loading="lazy"
             className="w-24"
@@ -63,6 +63,7 @@ const Navbar = ({ className = "" }) => {
                 <NavLink
                   key={item.name}
                   to={item.path}
+                  aria-label={`Navigate to ${item.name}`}
                   className={() => navLinkClasses(item.path)}
                 >
                   {item.name}
@@ -76,6 +77,7 @@ const Navbar = ({ className = "" }) => {
             {isContactPage ? (
               <button
                 onClick={() => navigate("/careers")}
+                aria-label="Go to careers page"
                 className={`hidden lg:flex ${
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
@@ -87,6 +89,7 @@ const Navbar = ({ className = "" }) => {
             ) : (
               <button
                 onClick={handleShareModalOpen}
+                aria-label="Open Share Your Idea modal"
                 className={`hidden lg:flex ${
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
@@ -104,13 +107,22 @@ const Navbar = ({ className = "" }) => {
                   : "text-gray-300"
               } p-2`}
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label={
+                isMobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? (
+                <X size={24} aria-hidden="true" />
+              ) : (
+                <Menu size={24} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu with slide animation */}
+        {/* Mobile Menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen
@@ -122,25 +134,28 @@ const Navbar = ({ className = "" }) => {
             className={`${
               className === "bg-[#FAFEF3]"
                 ? ""
-                : "bg-slate-700/20 backdrop-blur-2xl "
+                : "bg-slate-700/20 backdrop-blur-2xl"
             } p-4 space-y-3 border border-gray-500/50 rounded-2xl`}
           >
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
+                aria-label={`Navigate to ${item.name}`}
                 className={() => navLinkClasses(item.path)}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </NavLink>
             ))}
+
             {isContactPage ? (
               <button
                 onClick={() => {
                   navigate("/careers");
                   setIsMobileMenuOpen(false);
                 }}
+                aria-label="Go to careers page"
                 className={`w-full ${
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
@@ -152,6 +167,7 @@ const Navbar = ({ className = "" }) => {
             ) : (
               <button
                 onClick={handleShareModalOpen}
+                aria-label="Open Share Your Idea modal"
                 className={`w-full ${
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"

@@ -8,38 +8,39 @@ const Footer = () => {
   const servicesRef = useRef(null);
   const contentRef = useRef(null);
 
-useEffect(() => {
-  const marqueeContent = servicesRef.current?.querySelector(".marquee-content");
+  useEffect(() => {
+    const marqueeContent =
+      servicesRef.current?.querySelector(".marquee-content");
 
-  if (!marqueeContent) return;
+    if (!marqueeContent) return;
 
-  const width = marqueeContent.offsetWidth; // ✅ Cache early
+    const width = marqueeContent.offsetWidth; // ✅ Cache early
 
-  const ctx = gsap.context(() => {
-    gsap.fromTo(
-      [servicesRef.current, contentRef.current],
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.2,
-      }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        [servicesRef.current, contentRef.current],
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.2,
+        }
+      );
 
-    gsap.set(marqueeContent, { x: 0 });
+      gsap.set(marqueeContent, { x: 0 });
 
-    gsap.to(marqueeContent, {
-      x: -width / 3,
-      duration: 20,
-      ease: "none",
-      repeat: -1,
-    });
-  }, footerRef);
+      gsap.to(marqueeContent, {
+        x: -width / 3,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      });
+    }, footerRef);
 
-  return () => ctx.revert();
-}, []);
+    return () => ctx.revert();
+  }, []);
 
   const services = [
     "UI Design",
@@ -100,7 +101,10 @@ useEffect(() => {
                 <br />
                 TOGETHER
               </h2>
-              <button className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-base sm:text-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90">
+              <button
+                aria-label="Share your ideas with Kudos Digitals"
+                className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-base sm:text-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90"
+              >
                 <span className="group-hover:scale-110 transition-transform duration-200 text-center leading-tight">
                   Share
                   <br />
@@ -137,11 +141,21 @@ useEffect(() => {
                 <h3 className="text-[#AAD468] text-xl sm:text-2xl font-bold mb-4">
                   Follow Us
                 </h3>
-                <div className="flex gap-4 flex-wrap">
-                  {[Facebook, Linkedin, Twitter, Instagram].map((Icon, idx) => (
+                <div
+                  className="flex gap-4 flex-wrap"
+                  role="navigation"
+                  aria-label="Social media links"
+                >
+                  {[
+                    { Icon: Facebook, label: "Follow us on Facebook" },
+                    { Icon: Linkedin, label: "Connect with us on LinkedIn" },
+                    { Icon: Twitter, label: "Follow us on Twitter" },
+                    { Icon: Instagram, label: "Follow us on Instagram" },
+                  ].map(({ Icon, label }, idx) => (
                     <a
                       key={idx}
                       href="#"
+                      aria-label={label}
                       className="w-11 h-11 sm:w-12 sm:h-12 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
                     >
                       <Icon className="w-5 h-5 text-white group-hover:text-slate-900 transition-colors duration-300" />
@@ -155,23 +169,28 @@ useEffect(() => {
             <div className="border-t border-white/20 mt-12 pt-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-gray-400 text-sm text-center">
-                  © 2025 Kudos Digital. All rights reserved.
+                  © {new Date().getFullYear()} Kudos Digital. All rights
+                  reserved.
                 </p>
+
                 <div className="flex flex-col md:flex-row gap-4 text-sm text-center">
                   <a
                     href="#"
+                    aria-label="Read our privacy policy"
                     className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Privacy Policy
                   </a>
                   <a
                     href="#"
+                    aria-label="Read our terms of service"
                     className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Terms of Service
                   </a>
                   <a
                     href="#"
+                    aria-label="Adjust your cookie settings"
                     className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Cookie Settings
