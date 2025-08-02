@@ -84,7 +84,7 @@ const Navbar = ({ className = "" }) => {
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
                     : "bg-[#AAD468] hover:bg-lime-300"
-                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition mr-0`}
               >
                 Join Us Today
               </button>
@@ -96,7 +96,7 @@ const Navbar = ({ className = "" }) => {
                   className === "bg-[#FAFEF3]"
                     ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
                     : "bg-[#AAD468] hover:bg-lime-300"
-                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition mr-0`}
               >
                 Share Your Idea
               </button>
