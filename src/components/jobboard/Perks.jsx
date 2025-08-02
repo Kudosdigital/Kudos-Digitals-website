@@ -1,15 +1,25 @@
-import React from 'react'
-
-const Perks = ({icon, header, content}) => {
+const Perks = ({ icon, header, content }) => {
   return (
-    <div className='flex flex-col justify-center items-center '>
-        <div className=''>
-          {icon}
-        </div>
-      <h3 className='underline text-2xl md:text-3xl font-[700] mt-2'>{header}</h3>
-      <p className='text-center w-[60%] text-xl md:text-2xl mt-5 font-[400]'>{content}</p>
-    </div>
-  )
-}
+    <section
+      className="flex flex-col items-center text-center px-5 sm:px-8"
+      aria-labelledby={`perk-${header.replace(/\s+/g, "-").toLowerCase()}`}
+    >
+      <div className="text-[#AAD468] mb-2" aria-hidden="true">
+        {icon}
+      </div>
 
-export default Perks
+      <h3
+        id={`perk-${header.replace(/\s+/g, "-").toLowerCase()}`}
+        className="underline text-2xl md:text-3xl font-bold"
+      >
+        {header}
+      </h3>
+
+      <p className="mt-4 text-base md:text-xl font-normal max-w-md text-[#E4FADC]">
+        {content}
+      </p>
+    </section>
+  );
+};
+
+export default Perks;

@@ -2,18 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import teamMember1 from "../../assets/teamMember1.png";
-import teamMember2 from "../../assets/teamMember2.png";
-import teamMember3 from "../../assets/teamMember3.jpg";
-import teamMember4 from "../../assets/teamMember4.png";
-import unlock from "../../assets/unlock.jpg";
-import TYUL from "../../assets/TYUL.jpg";
-import mockup from "../../assets/Mockup.jpg";
-import mockup2 from "../../assets/Mockup2.jpg";
-import mockup3 from "../../assets/Mockup3.jpg";
-import fire from "../../assets/fire.jpg";
-import great from "../../assets/great.jpg";
-import IITA from "../../assets/IITA.jpg";
+import teamMember1 from "../../assets/teamMember1.webp";
+import teamMember2 from "../../assets/teamMember2.webp";
+import teamMember3 from "../../assets/teamMember3.webp";
+import teamMember4 from "../../assets/teamMember4.webp";
+import unlock from "../../assets/unlock.webp";
+import TYUL from "../../assets/TYUL.webp";
+import mockup from "../../assets/Mockup.webp";
+import mockup2 from "../../assets/Mockup2.webp";
+import mockup3 from "../../assets/Mockup3.webp";
+import fire from "../../assets/fire.webp";
+import great from "../../assets/great.webp";
+import IITA from "../../assets/IITA.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -191,7 +191,7 @@ const TeamSection = () => {
           scrollTrigger: {
             trigger: teamMembersRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -208,7 +208,7 @@ const TeamSection = () => {
           scrollTrigger: {
             trigger: counterRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
           onUpdate: function () {
             setProjectCount(Math.floor(this.targets()[0].innerText));
@@ -228,7 +228,7 @@ const TeamSection = () => {
           scrollTrigger: {
             trigger: storyScrollRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -244,7 +244,7 @@ const TeamSection = () => {
           stagger: 0.1,
           scrollTrigger: {
             start: "top 80%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -326,6 +326,7 @@ const TeamSection = () => {
                 >
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 sm:border-3 border-[#AAD468] overflow-hidden bg-gray-600 hover:scale-110 transition-transform duration-300">
                     <img
+                      loading="lazy"
                       src={
                         member.image ||
                         `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face`
@@ -372,6 +373,7 @@ const TeamSection = () => {
                       <div className="flex h-full items-center gap-2 sm:gap-3">
                         <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gray-300 rounded-xl overflow-hidden flex-shrink-0">
                           <img
+                            loading="lazy"
                             src={
                               card.image ||
                               "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=100&h=100&fit=crop"

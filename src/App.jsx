@@ -5,18 +5,22 @@ import NotFound from "./pages/NotFound";
 
 const routes = [
   { path: "/", element: lazy(() => import("./pages/Home")) },
-  { path: "/join_us", element: lazy(() => import("./pages/JoinUs")) },
-  { path: "/our_work", element: lazy(() => import("./pages/OurWork")) },
-  { path: "/our_work/:id", element: lazy(() => import("./pages/ProjectInfo")) },
+  { path: "/careers", element: lazy(() => import("./pages/JoinUs")) },
+  { path: "/our-work", element: lazy(() => import("./pages/OurWork")) },
+  { path: "/our-work/:id", element: lazy(() => import("./pages/ProjectInfo")) },
   {
-    path: "/join_us/:id",
+    path: "/careers/:id",
     element: lazy(() => import("./pages/JobApplication")),
   },
-  { path: "/our_brand", element: lazy(() => import("./pages/OurBrand")) },
-  { path: "/our_story", element: lazy(() => import("./pages/OurStory")) },
+  { path: "/our-brand", element: lazy(() => import("./pages/OurBrand")) },
+  { path: "/our-story", element: lazy(() => import("./pages/OurStory")) },
   {
     path: "/articles",
     element: lazy(() => import("./components/ourstory/Articles")),
+  },
+  {
+    path: "/contact-us",
+    element: lazy(() => import("./pages/ContactUs")),
   },
 ];
 

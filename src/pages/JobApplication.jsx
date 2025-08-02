@@ -4,7 +4,7 @@ import { jobApplication } from "../components/jobboard/Jobdata";
 import { useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import FooterNew from "../components/shared/FooterNew";
-import backgroundImage from "../assets/bg.png";
+import backgroundImage from "../assets/bg.webp";
 import emailjs from "@emailjs/browser";
 import BackToTop from "../components/shared/BackToTop";
 
@@ -88,11 +88,9 @@ const JobApplication = () => {
   };
 
   return (
-    <div className="bg-[#001515] text-[#AAD468]">
-      <div className="bg-[#042727ec]">
-        <Navbar />
-      </div>
-      <div className="">
+    <div className="text-[#AAD468]">
+      <Navbar />
+      <div>
         <div className="lg:px-20 px-5">
           <h2 className="text-center md:text-5xl text-3xl font-bold my-10">
             Job Application

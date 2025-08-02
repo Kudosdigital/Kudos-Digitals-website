@@ -38,7 +38,7 @@ const OurDna = () => {
           scrollTrigger: {
             trigger: leftColumnRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -54,7 +54,7 @@ const OurDna = () => {
           scrollTrigger: {
             trigger: rightColumnRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -71,7 +71,7 @@ const OurDna = () => {
       {/* Section Title */}
       <div
         ref={titleRef}
-        className="w-full pb-6 text-center z-10 will-change-transform"
+        className="w-full pb-6 text-center z-10 opacity-0 translate-y-8"
       >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3">
           What <span className="text-[#C6FF7F]">is imprinted in our DNA?</span>
@@ -84,7 +84,10 @@ const OurDna = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
         {/* Left Column */}
-        <div ref={leftColumnRef} className="space-y-6 will-change-transform">
+        <div
+          ref={leftColumnRef}
+          className="space-y-6 opacity-0 -translate-x-10"
+        >
           {/* Mission Card */}
           <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-white flex flex-col">
             <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold mb-2">
@@ -113,7 +116,7 @@ const OurDna = () => {
         {/* Right Column */}
         <div
           ref={rightColumnRef}
-          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-white overflow-y-auto will-change-transform"
+          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-white overflow-y-auto opacity-0 translate-x-10"
         >
           <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold">
             Our Values

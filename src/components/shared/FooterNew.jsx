@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import logo from "../../assets/footer logo.png";
+import logo from "../../assets/footer logo.webp";
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -61,15 +61,20 @@ const FooterNew = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left section: Let’s Talk */}
           <div className="flex items-center relative justify-center md:justify-start">
-            <div className="h-20 w-20 sm:h-24 sm:w-24 lg:h-36 lg:w-36 bg-[#AAD468] rounded-full shrink-0" />
-            <h2 className="text-white text-4xl sm:text-5xl lg:text-7xl font-extrabold absolute left-16 sm:left-20">
+            <div className="h-20 w-20 sm:h-24 sm:w-24 lg:h-36 lg:w-36 bg-[#AAD468] rounded-full shrink-0 absolute left-16 sm:left-20" />
+            <h2 className="text-white md:text-center text-4xl sm:text-5xl lg:text-7xl font-extrabold z-10">
               Let’s Talk
             </h2>
           </div>
 
           {/* Right section: Logo & Socials */}
           <div className="flex flex-col items-center md:items-end space-y-5">
-            <img src={logo} alt="footer logo" className="w-40 sm:w-48" />
+            <img
+              loading="lazy"
+              src={logo}
+              alt="footer logo"
+              className="w-30 sm:w-35"
+            />
             <div className="flex gap-4 text-white">
               <FacebookIcon className="hover:text-[#AAD468] transition" />
               <LinkedinIcon className="hover:text-[#AAD468] transition" />

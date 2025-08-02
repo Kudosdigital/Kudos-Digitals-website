@@ -1,6 +1,6 @@
 import Navbar from "../components/shared/Navbar";
 import Hero from "../components/home/Hero";
-import backgroundImage from "../assets/image 3.png";
+import backgroundImage from "../assets/image 3.webp";
 import CaseStudies from "../components/home/CaseStudies";
 import WhyUs from "../components/home/WhyUs";
 import Team from "../components/home/Team";
@@ -12,39 +12,40 @@ import BackToTop from "../components/shared/BackToTop";
 
 const Home = () => {
   return (
-    <main
-      className="relative min-h-screen"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 z-0"
+    <>
+      <main
+        className="relative overflow-x-hidden"
         style={{
-          backgroundColor: "#001515",
-          opacity: 0.85,
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
-      ></div>
+      >
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundColor: "#001515",
+            opacity: 0.85,
+          }}
+        ></div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <CaseStudies />
-        <WhyUs />
-        <Team />
-        <Stats />
-        <OurDna />
-        <Testimonials />
-        <Footer />
-      </div>
-
+        {/* Content */}
+        <div className="relative z-10">
+          <Navbar />
+          <Hero />
+          <CaseStudies />
+          <WhyUs />
+          <Team />
+          <Stats />
+          <OurDna />
+          <Testimonials />
+          <Footer />
+        </div>
+      </main>
       <BackToTop />
-    </main>
+    </>
   );
 };
 

@@ -1,42 +1,45 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
-import blur_image from "../../assets/Ellipse 30.png";
+import blur_image from "../../assets/Ellipse 30.webp";
 
 const Footer = () => {
   const footerRef = useRef(null);
   const servicesRef = useRef(null);
   const contentRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        [servicesRef.current, contentRef.current],
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.2,
-        }
-      );
+useEffect(() => {
+  const marqueeContent = servicesRef.current?.querySelector(".marquee-content");
 
-      const marqueeContent =
-        servicesRef.current?.querySelector(".marquee-content");
-      if (marqueeContent) {
-        gsap.set(marqueeContent, { x: 0 });
-        gsap.to(marqueeContent, {
-          x: -marqueeContent.offsetWidth / 3,
-          duration: 20,
-          ease: "none",
-          repeat: -1,
-        });
+  if (!marqueeContent) return;
+
+  const width = marqueeContent.offsetWidth; // ✅ Cache early
+
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      [servicesRef.current, contentRef.current],
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.2,
       }
-    }, footerRef);
+    );
 
-    return () => ctx.revert();
-  }, []);
+    gsap.set(marqueeContent, { x: 0 });
+
+    gsap.to(marqueeContent, {
+      x: -width / 3,
+      duration: 20,
+      ease: "none",
+      repeat: -1,
+    });
+  }, footerRef);
+
+  return () => ctx.revert();
+}, []);
 
   const services = [
     "UI Design",
@@ -58,7 +61,7 @@ const Footer = () => {
         className="relative overflow-hidden py-6 bg-[#AAD468] z-20"
       >
         <div className="marquee w-full overflow-hidden">
-          <div className="marquee-content flex gap-12 items-center whitespace-nowrap">
+          <div className="marquee-content flex gap-12 items-center whitespace-nowrap will-change-transform">
             {[...services, ...services, ...services].map((service, index) => (
               <div
                 key={index}
@@ -78,6 +81,7 @@ const Footer = () => {
       <div className="relative">
         <div className="absolute inset-0 z-10">
           <img
+            loading="lazy"
             src={blur_image}
             alt="Blur background"
             className="w-full h-full object-cover"

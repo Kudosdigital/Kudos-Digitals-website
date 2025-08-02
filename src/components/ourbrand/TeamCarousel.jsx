@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
-import placeholder from "../../assets/placeholder.png";
-import teamMember1 from "../../assets/teamMember1.png";
-import teamMember2 from "../../assets/teamMember2.png";
-import teamMember3 from "../../assets/teamMember3.jpg";
-import teamMember4 from "../../assets/teamMember4.png";
+import placeholder from "../../assets/placeholder.webp";
+import teamMember1 from "../../assets/teamMember1.webp";
+import teamMember2 from "../../assets/teamMember2.webp";
+import teamMember3 from "../../assets/teamMember3.webp";
+import teamMember4 from "../../assets/teamMember4.webp";
 
 const teamMembers = [
   {
@@ -106,6 +106,13 @@ const TeamCarousel = () => {
   const scrollRef = useRef(null);
   const [page, setPage] = useState(0);
   const totalPages = Math.ceil(teamMembers.length / visibleCards);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsTouchDevice(matchMedia("(pointer: coarse)").matches);
+    }
+  }, []);
 
   const scrollToPage = (index) => {
     if (!scrollRef.current) return;
@@ -169,14 +176,23 @@ const TeamCarousel = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="group relative bg-[#DFF0BC] rounded-3xl overflow-hidden flex-shrink-0 w-[200px] md:w-[200px] h-[420px] hover:w-[300px] transition-all duration-500 cursor-pointer"
+            className={`group relative bg-[#DFF0BC] rounded-3xl overflow-hidden flex-shrink-0 h-[420px] cursor-pointer transition-all duration-500 ${
+              isTouchDevice ? "w-[300px]" : "w-[200px] hover:w-[300px]"
+            }`}
           >
             <img
+              loading="lazy"
               src={member.image || placeholder}
               alt={member.name}
               className="object-cover w-full h-full group-hover:brightness-75 transition duration-300"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/60 text-white translate-y-full group-hover:translate-y-0 transition-all duration-500">
+            <div
+              className={`absolute bottom-0 left-0 right-0 p-4 bg-black/60 text-white transition-all duration-500 ${
+                isTouchDevice
+                  ? "translate-y-0"
+                  : "translate-y-full group-hover:translate-y-0"
+              }`}
+            >
               <h4 className="text-lg font-semibold">{member.name}</h4>
               <p className="text-sm">{member.role}</p>
               {member.linkedin && (

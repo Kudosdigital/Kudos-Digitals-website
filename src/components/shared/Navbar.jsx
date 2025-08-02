@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../../assets/Group 625860.png";
-import alt_logo from "../../assets/altLogo.png";
+import logo from "../../assets/Group 625860.webp";
+import alt_logo from "../../assets/altLogo.webp";
 import ShareModal from "./ShareModal";
 
 const Navbar = ({ className = "" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const isContactPage = location.pathname === "/contact-us";
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Our Work", path: "/our_work" },
-    { name: "Our Brand", path: "/our_brand" },
-    { name: "Our Story", path: "/our_story" },
-    { name: "Contact Us", path: "/join_us" },
+    { name: "Our Work", path: "/our-work" },
+    { name: "Our Brand", path: "/our-brand" },
+    { name: "Our Story", path: "/our-story" },
+    { name: "Contact Us", path: "/contact-us" },
   ];
 
   const navLinkClasses = (itemPath) => {
@@ -34,7 +36,7 @@ const Navbar = ({ className = "" }) => {
 
   const handleShareModalOpen = () => {
     setIsShareModalOpen(true);
-    setIsMobileMenuOpen(false); // Close mobile menu if open
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -42,6 +44,7 @@ const Navbar = ({ className = "" }) => {
       <nav className={`${className} px-4 py-6 lg:px-8 relative z-50`}>
         <div className="flex items-center justify-between  mx-auto">
           <img
+            loading="lazy"
             className="w-24"
             src={className === "bg-[#FAFEF3]" ? alt_logo : logo}
             alt="Kudos Digital Agency Logo"
@@ -70,19 +73,36 @@ const Navbar = ({ className = "" }) => {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center space-x-4">
-            <button
-              onClick={handleShareModalOpen}
-              className={`hidden lg:flex ${
-                className === "bg-[#FAFEF3]"
-                  ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
-                  : "bg-[#AAD468] hover:bg-lime-300"
-              }  text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
-            >
-              Share Your Idea
-            </button>
+            {isContactPage ? (
+              <button
+                onClick={() => navigate("/careers")}
+                className={`hidden lg:flex ${
+                  className === "bg-[#FAFEF3]"
+                    ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                    : "bg-[#AAD468] hover:bg-lime-300"
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+              >
+                Join Us Today
+              </button>
+            ) : (
+              <button
+                onClick={handleShareModalOpen}
+                className={`hidden lg:flex ${
+                  className === "bg-[#FAFEF3]"
+                    ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                    : "bg-[#AAD468] hover:bg-lime-300"
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+              >
+                Share Your Idea
+              </button>
+            )}
 
             <button
-              className="lg:hidden text-gray-300 hover:text-white p-2"
+              className={`lg:hidden ${
+                className === "bg-[#FAFEF3]"
+                  ? "text-[#001C1C]"
+                  : "text-gray-300"
+              } p-2`}
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,22 +129,38 @@ const Navbar = ({ className = "" }) => {
               <NavLink
                 key={item.name}
                 to={item.path}
-                className={navLinkClasses}
+                className={() => navLinkClasses(item.path)}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </NavLink>
             ))}
-            <button
-              onClick={handleShareModalOpen}
-              className={`w-full ${
-                className === "bg-[#FAFEF3]"
-                  ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
-                  : "bg-[#AAD468] hover:bg-lime-300"
-              } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
-            >
-              Share Your Idea
-            </button>
+            {isContactPage ? (
+              <button
+                onClick={() => {
+                  navigate("/careers");
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full ${
+                  className === "bg-[#FAFEF3]"
+                    ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                    : "bg-[#AAD468] hover:bg-lime-300"
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+              >
+                Join Us Today
+              </button>
+            ) : (
+              <button
+                onClick={handleShareModalOpen}
+                className={`w-full ${
+                  className === "bg-[#FAFEF3]"
+                    ? "bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A]"
+                    : "bg-[#AAD468] hover:bg-lime-300"
+                } text-[#001C1C] px-6 py-2 rounded-lg text-sm font-semibold cursor-pointer transition`}
+              >
+                Share Your Idea
+              </button>
+            )}
           </div>
         </div>
       </nav>

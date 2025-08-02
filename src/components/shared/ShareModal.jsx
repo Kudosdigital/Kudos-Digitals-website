@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ShareModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,10 @@ const ShareModal = ({ isOpen, onClose }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   const projectTypes = [
     "UI/UX Design",
@@ -22,6 +27,37 @@ const ShareModal = ({ isOpen, onClose }) => {
     "Graphic Design",
     "Other",
   ];
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -105,14 +141,138 @@ const ShareModal = ({ isOpen, onClose }) => {
       projectIdea: "",
     });
     setErrors({});
+    setShowDatePicker(false);
+    setSelectedDate(null);
     onClose();
+  };
+
+  // Date picker functions
+  const getDaysInMonth = (month, year) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (month, year) => {
+    return new Date(year, month, 1).getDay();
+  };
+
+  const handleDateSelect = (day) => {
+    const date = new Date(currentYear, currentMonth, day);
+    setSelectedDate(date);
+    const formattedDate = date.toISOString().split("T")[0];
+    setFormData((prev) => ({
+      ...prev,
+      consultationDate: formattedDate,
+    }));
+  };
+
+  const handleDatePickerDone = () => {
+    setShowDatePicker(false);
+  };
+
+  const navigateMonth = (direction) => {
+    if (direction === "prev") {
+      if (currentMonth === 0) {
+        setCurrentMonth(11);
+        setCurrentYear(currentYear - 1);
+      } else {
+        setCurrentMonth(currentMonth - 1);
+      }
+    } else {
+      if (currentMonth === 11) {
+        setCurrentMonth(0);
+        setCurrentYear(currentYear + 1);
+      } else {
+        setCurrentMonth(currentMonth + 1);
+      }
+    }
+  };
+
+  const renderCalendar = () => {
+    const daysInMonth = getDaysInMonth(currentMonth, currentYear);
+    const firstDay = getFirstDayOfMonth(currentMonth, currentYear);
+    const days = [];
+
+    // Previous month's trailing days
+    const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+    const daysInPrevMonth = getDaysInMonth(prevMonth, prevYear);
+
+    for (let i = firstDay - 1; i >= 0; i--) {
+      days.push(
+        <button
+          key={`prev-${daysInPrevMonth - i}`}
+          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors"
+          onClick={() => {
+            setCurrentMonth(prevMonth);
+            setCurrentYear(prevYear);
+            handleDateSelect(daysInPrevMonth - i);
+          }}
+        >
+          {daysInPrevMonth - i}
+        </button>
+      );
+    }
+
+    // Current month days
+    for (let day = 1; day <= daysInMonth; day++) {
+      const isSelected =
+        selectedDate &&
+        selectedDate.getDate() === day &&
+        selectedDate.getMonth() === currentMonth &&
+        selectedDate.getFullYear() === currentYear;
+
+      const isToday =
+        new Date().getDate() === day &&
+        new Date().getMonth() === currentMonth &&
+        new Date().getFullYear() === currentYear;
+
+      days.push(
+        <button
+          key={day}
+          className={`w-12 h-12 rounded-xl transition-colors ${
+            isSelected
+              ? "bg-[#AAD468] text-black font-bold"
+              : isToday
+              ? "bg-[#AAD468]/20 text-[#AAD468] font-bold"
+              : "text-gray-700 hover:bg-gray-100"
+          }`}
+          onClick={() => handleDateSelect(day)}
+        >
+          {day}
+        </button>
+      );
+    }
+
+    // Next month's leading days
+    const totalCells = 42; // 6 rows × 7 days
+    const remainingCells = totalCells - days.length;
+    const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+    const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+
+    for (let day = 1; day <= remainingCells; day++) {
+      days.push(
+        <button
+          key={`next-${day}`}
+          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors"
+          onClick={() => {
+            setCurrentMonth(nextMonth);
+            setCurrentYear(nextYear);
+            handleDateSelect(day);
+          }}
+        >
+          {day}
+        </button>
+      );
+    }
+
+    return days;
   };
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-2xl flex items-center justify-center z-[9999] p-4">
-      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh]">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-[#AAD468]">
@@ -128,7 +288,10 @@ const ShareModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form
+          onSubmit={handleSubmit}
+          className="overflow-y-auto p-6 flex-1 space-y-6"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Name */}
             <div>
@@ -272,22 +435,24 @@ const ShareModal = ({ isOpen, onClose }) => {
               )}
             </div>
 
-            {/* Preferred Consultation Date/Time */}
-            <div>
+            {/* Preferred Consultation Date */}
+            <div className="relative">
               <label
                 htmlFor="consultationDate"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Preferred Consultation Date/Time
+                Preferred Consultation Date
               </label>
               <div className="relative">
                 <input
-                  type="datetime-local"
+                  type="text"
                   id="consultationDate"
                   name="consultationDate"
-                  value={formData.consultationDate}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors"
+                  value={selectedDate ? selectedDate.toLocaleDateString() : ""}
+                  readOnly
+                  onClick={() => setShowDatePicker(true)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors cursor-pointer"
+                  placeholder="Select a date"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
                   <svg
@@ -305,6 +470,63 @@ const ShareModal = ({ isOpen, onClose }) => {
                   </svg>
                 </div>
               </div>
+
+              {/* Custom Date Picker */}
+              {showDatePicker && (
+                <div className="absolute top-full left-0 right-0 z-50 mt-2 bg-white border border-gray-200 rounded-3xl shadow-lg p-6">
+                  {/* Calendar Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <button
+                      type="button"
+                      onClick={() => navigateMonth("prev")}
+                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors"
+                    >
+                      <ChevronLeft className="w-5 h-5 text-gray-600" />
+                    </button>
+
+                    <div className="text-center">
+                      <div className="text-gray-500 text-sm">{currentYear}</div>
+                      <div className="text-xl font-bold text-gray-800">
+                        {months[currentMonth]}
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => navigateMonth("next")}
+                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors"
+                    >
+                      <ChevronRight className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </div>
+
+                  {/* Days of Week Header */}
+                  <div className="grid grid-cols-7 gap-2 mb-4">
+                    {daysOfWeek.map((day) => (
+                      <div
+                        key={day}
+                        className="text-center text-sm font-medium text-gray-500 py-2"
+                      >
+                        {day}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Calendar Grid */}
+                  <div className="grid grid-cols-7 gap-2 mb-6">
+                    {renderCalendar()}
+                  </div>
+
+                  {/* Done Button */}
+                  <button
+                    type="button"
+                    onClick={handleDatePickerDone}
+                    className="w-full bg-[#AAD468] hover:bg-[#9BC555] text-black font-bold py-3 rounded-lg transition-colors"
+                  >
+                    Done
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 

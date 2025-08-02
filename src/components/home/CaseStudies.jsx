@@ -3,11 +3,11 @@ import { ArrowDownLeft, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import image1 from "../../assets/TYUL.jpg";
-import image2 from "../../assets/6.jpg";
-import image3 from "../../assets/CEA.jpg";
-import circle1 from "../../assets/Ellipse 37.png";
-import circle2 from "../../assets/Ellipse 38.png";
+import image1 from "../../assets/TYUL.webp";
+import image2 from "../../assets/6.webp";
+import image3 from "../../assets/CEA.webp";
+import circle1 from "../../assets/Ellipse 37.webp";
+import circle2 from "../../assets/Ellipse 38.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -146,6 +146,7 @@ const CaseStudies = () => {
                           {study.description}
                         </p>
                         <img
+                          loading="lazy"
                           src={study.image}
                           alt={study.title}
                           className="w-28 sm:w-48 h-auto object-contain"
@@ -155,11 +156,13 @@ const CaseStudies = () => {
                       <>
                         {/* Decorative Circles */}
                         <img
+                          loading="lazy"
                           src={circle1}
                           alt="circle1"
                           className="absolute bottom-4 right-8 w-30 sm:w-40"
                         />
                         <img
+                          loading="lazy"
                           src={circle2}
                           alt="circle2"
                           className="absolute bottom-8 left-6 w-10 sm:w-16"

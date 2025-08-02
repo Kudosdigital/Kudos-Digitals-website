@@ -2,8 +2,8 @@ import Navbar from "../../components/shared/Navbar";
 import Footer from "../shared/Footer";
 import BackToTop from "../shared/BackToTop";
 import { useLocation, useNavigate } from "react-router-dom";
-import backgroundImage from "../../assets/image 3.png";
-import { ArrowLeft, User, UserCircle } from "lucide-react";
+import backgroundImage from "../../assets/image 3.webp";
+import { ArrowLeft, UserCircle } from "lucide-react";
 
 const Articles = () => {
   const location = useLocation();
@@ -156,6 +156,7 @@ const Articles = () => {
       <section className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-white">
         {/* Article Image */}
         <img
+          loading="lazy"
           src={article.image}
           alt={article.title}
           className="rounded-3xl w-full mb-8 object-cover h-80"
@@ -298,6 +299,7 @@ const Articles = () => {
               }
             >
               <img
+                loading="lazy"
                 src={post.image}
                 alt={post.title}
                 className="w-full h-48 object-cover"

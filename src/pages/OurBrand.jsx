@@ -1,7 +1,7 @@
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
-import team from "../assets/team.jpg";
-import team2 from "../assets/team2.jpg";
+import team from "../assets/team.webp";
+import team2 from "../assets/team2.webp";
 import { Briefcase, Layout, Globe, Brush, Code, Rocket } from "lucide-react";
 import BackToTop from "../components/shared/BackToTop";
 import TeamCarousel from "../components/ourbrand/TeamCarousel";
@@ -73,6 +73,7 @@ const OurBrand = () => {
         </h2>
         <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10 items-center">
           <img
+            loading="lazy"
             src={team}
             alt="Kudos team at work"
             className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl shadow-lg shadow-[#4d4d4d]"
@@ -113,6 +114,7 @@ const OurBrand = () => {
             </button>
           </div>
           <img
+            loading="lazy"
             src={team2}
             alt="Kudos team collaborating"
             className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl shadow-lg shadow-[#4d4d4d]"

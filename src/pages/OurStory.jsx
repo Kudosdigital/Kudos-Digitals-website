@@ -4,12 +4,12 @@ import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { gsap } from "gsap";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
-import VR from "../assets/VR.jpg";
-import art from "../assets/art.jpg";
-import figma from "../assets/figma.jpg";
+import VR from "../assets/VR.webp";
+import art from "../assets/art.webp";
+import figma from "../assets/figma.webp";
 import BackToTop from "../components/shared/BackToTop";
-import backgroundImage from "../assets/image 3.png";
-import article_image from "../assets/team.jpg";
+import backgroundImage from "../assets/image 3.webp";
+import article_image from "../assets/team.webp";
 
 const OurStory = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -247,7 +247,7 @@ const OurStory = () => {
         }}
       ></div>
 
-      <header className="relative z-10">
+      <header className="relative">
         <Navbar />
         <div className="border-b border-[#99999966] mx-auto max-w-fit py-6 md:py-20 px-4 sm:px-6 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-[#AAD468]">
@@ -261,11 +261,12 @@ const OurStory = () => {
       </header>
 
       {/* Main Content Section */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div className="relative px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Left Large Card */}
           <div className="md:col-span-2 h-[605px] relative rounded-3xl overflow-hidden shadow-lg group">
             <img
+              loading="lazy"
               src={featuredArticles[0].image}
               alt={featuredArticles[0].title}
               className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500"
@@ -291,6 +292,7 @@ const OurStory = () => {
             {/* Card 1 */}
             <div className="relative rounded-3xl overflow-hidden shadow-lg group h-[294px]">
               <img
+                loading="lazy"
                 src={featuredArticles[1].image}
                 alt={featuredArticles[1].title}
                 className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500"
@@ -314,6 +316,7 @@ const OurStory = () => {
             {/* Card 2 */}
             <div className="relative rounded-3xl overflow-hidden shadow-lg group h-[294px]">
               <img
+                loading="lazy"
                 src={featuredArticles[2].image}
                 alt={featuredArticles[2].title}
                 className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500"
@@ -338,7 +341,7 @@ const OurStory = () => {
       </div>
 
       {/* Latest Articles Section */}
-      <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="max-w-7xl mx-auto">
           {/* Section Header with Filter */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 gap-4">
@@ -397,6 +400,7 @@ const OurStory = () => {
                 className="relative rounded-3xl overflow-hidden shadow-lg group bg-slate-800 flex flex-col"
               >
                 <img
+                  loading="lazy"
                   src={article.image}
                   alt={article.title}
                   className="w-full h-48 sm:h-52 object-cover transition-transform group-hover:scale-105 duration-500 flex-shrink-0"

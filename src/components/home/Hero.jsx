@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
-import BLOT from "../../assets/BLOT BEAUTY.png";
-import JETRIDE from "../../assets/JETRIDE SVG.png";
-import ALPHA_SEVEN_SOLUTIONS from "../../assets/ALPHA 7.png";
-import ABIDOL_PHARMA from "../../assets/ABIDOL.png";
-import ULE_HOMES from "../../assets/ULE HOMES.png";
+import BLOT from "../../assets/BLOT BEAUTY.webp";
+import JETRIDE from "../../assets/JETRIDE SVG.webp";
+import ALPHA_SEVEN_SOLUTIONS from "../../assets/ALPHA 7.webp";
+import ABIDOL_PHARMA from "../../assets/ABIDOL.webp";
+import ULE_HOMES from "../../assets/ULE HOMES.webp";
 
 const HeroSection = () => {
   const heroRef = useRef(null);
@@ -14,7 +14,7 @@ const HeroSection = () => {
   const descriptionRef = useRef(null);
   const brandsRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(
         [

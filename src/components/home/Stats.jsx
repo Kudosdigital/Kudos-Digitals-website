@@ -1,11 +1,7 @@
-import { useRef, useEffect, useState } from "react";
-import icon1 from "../../assets/icon.png";
-import icon2 from "../../assets/icon (1).png";
-import icon3 from "../../assets/icon (2).png";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect } from "react";
+import icon1 from "../../assets/icon.webp";
+import icon2 from "../../assets/icon (1).webp";
+import icon3 from "../../assets/icon (2).webp";
 
 const stats = [
   {
@@ -34,41 +30,53 @@ const stats = [
 const Stats = () => {
   const sectionRef = useRef(null);
   const countRefs = useRef([]);
-  const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      stats.forEach((stat, index) => {
-        gsap.fromTo(
-          countRefs.current[index],
-          { innerText: 0 },
-          {
-            innerText: stat.endValue,
-            duration: 2,
-            ease: "power2.out",
-            snap: { innerText: stat.isDecimal ? 0.01 : 1 },
-            scrollTrigger: {
-              trigger: countRefs.current[index],
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-            onUpdate: function () {
-              const value = this.targets()[0].innerText;
-              const formatted = stat.isDecimal
-                ? parseFloat(value).toFixed(2)
-                : Math.floor(value);
-              setCounts((prev) => {
-                const updated = [...prev];
-                updated[index] = formatted;
-                return updated;
-              });
-            },
-          }
-        );
-      });
-    }, sectionRef);
+    const observers = [];
 
-    return () => ctx.revert();
+    stats.forEach((stat, index) => {
+      const el = countRefs.current[index];
+      if (!el) return;
+
+      const animateCount = () => {
+        let start = null;
+        const duration = 2000;
+        const endValue = stat.endValue;
+        const isDecimal = stat.isDecimal;
+
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const value = Math.min(progress / duration, 1) * endValue;
+
+          const formatted = isDecimal ? value.toFixed(2) : Math.floor(value);
+          el.textContent = formatted + (!isDecimal ? "+" : "");
+
+          if (progress < duration) {
+            requestAnimationFrame(step);
+          }
+        };
+
+        requestAnimationFrame(step);
+      };
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            animateCount();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
   }, []);
 
   return (
@@ -80,15 +88,15 @@ const Stats = () => {
             className="flex flex-col items-center gap-4 sm:gap-6"
           >
             <img
+              loading="lazy"
               src={stat.icon}
               alt="Stat Icon"
               className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
             />
-            <div className="text-5xl sm:text-6xl lg:text-8xl font-black leading-none">
+            <div className="text-5xl sm:text-6xl lg:text-8xl font-black leading-none will-change-transform">
               <span ref={(el) => (countRefs.current[index] = el)}>
-                {counts[index]}
+                {stat.isDecimal ? "0.00" : "0+"}
               </span>
-              {!stat.isDecimal && "+"}
             </div>
             <h2 className="text-lg sm:text-xl font-semibold whitespace-pre-line leading-tight">
               {stat.label}

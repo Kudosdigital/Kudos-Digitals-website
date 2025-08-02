@@ -42,6 +42,7 @@ const ProjectInfo = () => {
         </p>
 
         <img
+          loading="lazy"
           src={imageUrl}
           alt={`${title} preview`}
           className="w-full h-auto md:h-[620px] my-10 rounded-2xl object-cover object-top"
@@ -59,6 +60,7 @@ const ProjectInfo = () => {
           <div className="grid md:grid-cols-[60%_40%] gap-5 mt-10">
             {imageUrl1 && (
               <img
+                loading="lazy"
                 src={imageUrl1}
                 alt="Project visual 1"
                 className="w-full h-[400px] md:h-[600px] rounded-2xl object-contain"
@@ -67,6 +69,7 @@ const ProjectInfo = () => {
             <div className="flex flex-col justify-between gap-5">
               {imageUrl2 && (
                 <img
+                  loading="lazy"
                   src={imageUrl2}
                   alt="Project visual 2"
                   className="w-full h-[200px] md:h-[280px] rounded-2xl object-contain"
@@ -74,6 +77,7 @@ const ProjectInfo = () => {
               )}
               {imageUrl3 && (
                 <img
+                  loading="lazy"
                   src={imageUrl3}
                   alt="Project visual 3"
                   className="w-full h-[200px] md:h-[280px] rounded-2xl object-contain"

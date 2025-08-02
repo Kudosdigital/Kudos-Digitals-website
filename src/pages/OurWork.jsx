@@ -4,18 +4,18 @@ import Footer from "../components/shared/Footer";
 import { Link } from "react-router";
 
 // image imports
-import one from "../assets/1.jpg";
-import two from "../assets/2.jpg";
-import three from "../assets/3.jpg";
-import four from "../assets/4.jpg";
-import five from "../assets/5.jpg";
-import six from "../assets/6.jpg";
-import seven from "../assets/7.jpg";
-import eight from "../assets/8.jpg";
-import nine from "../assets/9.jpg";
-import ten from "../assets/10.jpg";
-import eleven from "../assets/11.jpg";
-import twelve from "../assets/12.jpg";
+import one from "../assets/1.webp";
+import two from "../assets/2.webp";
+import three from "../assets/3.webp";
+import four from "../assets/4.webp";
+import five from "../assets/5.webp";
+import six from "../assets/6.webp";
+import seven from "../assets/7.webp";
+import eight from "../assets/8.webp";
+import nine from "../assets/9.webp";
+import ten from "../assets/10.webp";
+import eleven from "../assets/11.webp";
+import twelve from "../assets/12.webp";
 import BackToTop from "../components/shared/BackToTop";
 
 // sample data
@@ -135,6 +135,7 @@ const OurWork = () => {
             className="rounded-xl shadow-lg shadow-[#4d4d4d] bg-[#001C1C] flex flex-col overflow-hidden"
           >
             <img
+              loading="lazy"
               src={user.imageUrl}
               alt={user.title}
               className="object-cover h-56 sm:h-48 w-full"

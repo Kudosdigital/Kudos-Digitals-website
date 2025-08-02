@@ -8,8 +8,8 @@ import {
 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import man_woman from "../../assets/Subtract.png";
-import circle from "../../assets/Ellipse 25.png";
+import man_woman from "../../assets/Subtract.webp";
+import circle from "../../assets/Ellipse 25.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,6 +89,7 @@ const WhyUs = () => {
       {/* Floating bubbles with animation */}
       {/* Bubble 1 (largest one) */}
       <img
+        loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[23%] left-[80%] sm:top-[15%] sm:left-[62%] md:top-[16%] md:left-[86%] lg:top-[21%] lg:left-[77%] w-10 sm:w-12 md:w-18 lg:w-20 z-0"
@@ -96,6 +97,7 @@ const WhyUs = () => {
 
       {/* Bubble 2 (small) */}
       <img
+        loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[25%] left-[16%] sm:top-[48%] sm:left-[54%] md:top-[19%] md:left-[14%] lg:top-[26%] lg:left-[53%] w-4 sm:w-6 md:w-10 lg:w-10 z-0"
@@ -103,6 +105,7 @@ const WhyUs = () => {
 
       {/* Bubble 3 (medium) */}
       <img
+        loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[24%] left-[23%] sm:top-[46%] sm:left-[55%] md:top-[17%] md:left-[21%] lg:top-[24%] lg:left-[56%] w-6 sm:w-8 md:w-12 lg:w-12 z-0"
@@ -110,6 +113,7 @@ const WhyUs = () => {
 
       {/* Bubble 4 (tiny) */}
       <img
+        loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[26%] left-[21%] sm:top-[44%] sm:left-[53%] md:top-[21%] md:left-[20%] lg:top-[29%] lg:left-[55%] w-3 sm:w-4 md:w-7 lg:w-6 z-0"
@@ -157,6 +161,7 @@ const WhyUs = () => {
           className="relative w-full max-w-2xl h-auto lg:h-[550px] flex items-center justify-center"
         >
           <img
+            loading="lazy"
             src={man_woman}
             alt="collaboration"
             className="w-auto h-full object-cover rounded-tr-md rounded-bl-md"
