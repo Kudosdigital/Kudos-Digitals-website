@@ -397,7 +397,7 @@ const OurStory = () => {
             {currentArticles.map((article, index) => (
               <article
                 key={article.id}
-                className="relative rounded-3xl overflow-hidden shadow-lg group bg-slate-800 flex flex-col"
+                className="relative rounded-3xl overflow-hidden shadow-lg group bg-[#001C1C] flex flex-col"
               >
                 <img
                   loading="lazy"
