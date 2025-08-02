@@ -82,11 +82,11 @@ const JoinUs = () => {
         >
           <h2
             id="job-opportunities-heading"
-            className="text-3xl md:text-5xl font-semibold py-16"
+            className="text-3xl md:text-5xl font-semibold pt-10 sm:py-16"
           >
             Current Job Opportunities
           </h2>
-          <div className="space-y-6 pb-16">
+          <div className="space-y-6 md:pb-16">
             {jobApplication.map((job) => (
               <JobBar
                 key={job.id}

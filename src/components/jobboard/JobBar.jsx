@@ -7,7 +7,7 @@ const JobBar = ({ title, linkId }) => {
       role="group"
       aria-labelledby={`job-title-${title.replace(/\s+/g, "-").toLowerCase()}`}
     >
-      <div className="text-center sm:text-start">
+      <div className="text-start">
         <h3
           id={`job-title-${title.replace(/\s+/g, "-").toLowerCase()}`}
           className="text-black text-lg sm:text-xl lg:text-2xl font-semibold underline"

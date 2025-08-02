@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../shared/Footer";
 import BackToTop from "../shared/BackToTop";
@@ -9,6 +10,10 @@ const Articles = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const article = location.state?.article;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Mock data for demonstration - replace with your actual data
   const mockAuthor = {
