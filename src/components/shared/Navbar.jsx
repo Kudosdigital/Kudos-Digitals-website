@@ -23,7 +23,9 @@ const Navbar = ({ className = "" }) => {
   const navLinkClasses = (itemPath) => {
     const isCurrent =
       location.pathname === itemPath ||
-      (itemPath === "/our-story" && location.pathname.startsWith("/articles"));
+      (itemPath === "/our-story" &&
+        location.pathname.startsWith("/articles")) ||
+      (itemPath === "/our-work" && location.pathname.startsWith("/our-work/"));
 
     return `block px-4 py-2 rounded-full text-sm font-black transition-all duration-200 ${
       isCurrent

@@ -8,6 +8,7 @@ import image2 from "../../assets/6.webp";
 import image3 from "../../assets/CEA.webp";
 import circle1 from "../../assets/Ellipse 37.webp";
 import circle2 from "../../assets/Ellipse 38.webp";
+import { useNavigate } from "react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,6 +45,7 @@ const CaseStudies = () => {
   const cardsRef = useRef([]);
   const scrollContainerRef = useRef(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -189,7 +191,10 @@ const CaseStudies = () => {
 
         {/* CTA Button */}
         <div className="mt-16 flex justify-center">
-          <button className="bg-lime-400 text-slate-900 px-8 sm:px-10 py-3 rounded-xl font-medium cursor-pointer hover:bg-lime-500 transition-all duration-300">
+          <button
+            onClick={() => navigate("/our-work")}
+            className="bg-lime-400 text-slate-900 px-8 sm:px-10 py-3 rounded-xl font-medium cursor-pointer hover:bg-lime-500 transition-all duration-300"
+          >
             See More
           </button>
         </div>

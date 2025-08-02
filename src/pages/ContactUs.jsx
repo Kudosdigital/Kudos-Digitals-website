@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/shared/Navbar";
 import FooterNew from "../components/shared/FooterNew";
 import backgroundImage from "../assets/image 3.webp";
@@ -23,6 +23,10 @@ const ContactUs = () => {
     "Partnership",
     "Other",
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;

@@ -19,6 +19,10 @@ const OurStory = () => {
   const filterRef = useRef(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleReadMore = (article) => {
     navigate("/articles", { state: { article } });
   };

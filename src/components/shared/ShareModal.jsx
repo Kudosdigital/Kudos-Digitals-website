@@ -201,7 +201,7 @@ const ShareModal = ({ isOpen, onClose }) => {
       days.push(
         <button
           key={`prev-${daysInPrevMonth - i}`}
-          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors"
+          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors cursor-pointer"
           onClick={() => {
             setCurrentMonth(prevMonth);
             setCurrentYear(prevYear);
@@ -229,7 +229,7 @@ const ShareModal = ({ isOpen, onClose }) => {
       days.push(
         <button
           key={day}
-          className={`w-12 h-12 rounded-xl transition-colors ${
+          className={`w-12 h-12 rounded-xl transition-colors cursor-pointer ${
             isSelected
               ? "bg-[#AAD468] text-black font-bold"
               : isToday
@@ -253,7 +253,7 @@ const ShareModal = ({ isOpen, onClose }) => {
       days.push(
         <button
           key={`next-${day}`}
-          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors"
+          className="w-12 h-12 rounded-xl text-gray-400 hover:bg-gray-100 transition-colors cursor-pointer"
           onClick={() => {
             setCurrentMonth(nextMonth);
             setCurrentYear(nextYear);
@@ -280,7 +280,7 @@ const ShareModal = ({ isOpen, onClose }) => {
           </h2>
           <button
             onClick={handleClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+            className="text-gray-400 hover:text-gray-600 text-2xl font-bold cursor-pointer"
             aria-label="Close modal"
           >
             ×
@@ -479,7 +479,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       onClick={() => navigateMonth("prev")}
-                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors"
+                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors cursor-pointer"
                     >
                       <ChevronLeft className="w-5 h-5 text-gray-600" />
                     </button>
@@ -494,7 +494,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       onClick={() => navigateMonth("next")}
-                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors"
+                      className="w-10 h-10 rounded-full bg-[#AAD468]/20 hover:bg-[#AAD468]/30 flex items-center justify-center transition-colors cursor-pointer"
                     >
                       <ChevronRight className="w-5 h-5 text-gray-600" />
                     </button>
@@ -521,7 +521,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                   <button
                     type="button"
                     onClick={handleDatePickerDone}
-                    className="w-full bg-[#AAD468] hover:bg-[#9BC555] text-black font-bold py-3 rounded-lg transition-colors"
+                    className="w-full bg-[#AAD468] hover:bg-[#9BC555] text-black font-bold py-3 rounded-lg transition-colors cursor-pointer"
                   >
                     Done
                   </button>
@@ -558,7 +558,7 @@ const ShareModal = ({ isOpen, onClose }) => {
           <div className="flex justify-center pt-4">
             <button
               type="submit"
-              className="bg-[#AAD468] hover:bg-[#9BC555] text-black font-bold py-3 px-12 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#AAD468] focus:ring-offset-2"
+              className="bg-[#AAD468] hover:bg-[#9BC555] text-black font-bold py-3 px-12 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#AAD468] focus:ring-offset-2 cursor-pointer"
             >
               Submit
             </button>

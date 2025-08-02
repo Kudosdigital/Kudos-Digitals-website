@@ -2,10 +2,15 @@ import { useParams } from "react-router-dom";
 import { users } from "./OurWork";
 import Navbar from "../components/shared/Navbar";
 import FooterNew from "../components/shared/FooterNew";
+import { useEffect } from "react";
 
 const ProjectInfo = () => {
   const { id } = useParams();
   const project = users.find((p) => p.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!project) {
     return <div className="text-white p-10">Project not found.</div>;
@@ -45,7 +50,7 @@ const ProjectInfo = () => {
           loading="lazy"
           src={imageUrl}
           alt={`${title} preview`}
-          className="w-full h-auto md:h-[620px] my-10 rounded-2xl object-cover object-top"
+          className="w-full h-auto md:h-[620px] my-10 rounded-2xl object-cover"
         />
 
         <h3 className="text-2xl md:text-3xl mb-3 text-[#002E2E] font-semibold">

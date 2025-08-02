@@ -14,6 +14,7 @@ import mockup3 from "../../assets/Mockup3.webp";
 import fire from "../../assets/fire.webp";
 import great from "../../assets/great.webp";
 import IITA from "../../assets/IITA.webp";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ const TeamSection = () => {
   const counterRef = useRef(null);
   const storyScrollRef = useRef(null);
   const [projectCount, setProjectCount] = useState(0);
+  const navigate = useNavigate();
 
   // Team members data (you'll add your image paths)
   const teamMembers = [
@@ -343,8 +345,9 @@ const TeamSection = () => {
             </div>
 
             <button
+              onClick={() => navigate("/careers")}
               aria-label="Join the Kudos Digitals team"
-              className="bg-gray-200 text-gray-800 px-4 sm:px-6 py-2 rounded-lg font-medium hover:bg-white transition-colors text-sm sm:text-base"
+              className="bg-gray-200 cursor-pointer text-gray-800 px-4 sm:px-6 py-2 rounded-lg font-medium hover:bg-white transition-colors text-sm sm:text-base"
             >
               Join us Today
             </button>
@@ -357,8 +360,9 @@ const TeamSection = () => {
                 Our Story
               </h2>
               <button
+                onClick={() => navigate("/our-story")}
                 aria-label="Read the Kudos Digitals story"
-                className="bg-[#002424] text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors self-start sm:self-auto"
+                className="bg-[#002424] cursor-pointer text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors self-start sm:self-auto"
               >
                 Read Our Story
               </button>

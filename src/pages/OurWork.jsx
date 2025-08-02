@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { Link } from "react-router";
@@ -77,6 +77,10 @@ export const users = [
 ];
 
 const OurWork = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const categories = [
     "All",
     "Brand Identity",
@@ -128,36 +132,47 @@ const OurWork = () => {
       </div>
 
       {/* Filtered Projects */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-4 sm:px-6 md:px-28 mt-10 my-10 relative">
-        {filteredUsers.map((user) => (
-          <div
-            key={user.id}
-            className="rounded-xl shadow-lg shadow-[#4d4d4d] bg-[#001C1C] flex flex-col overflow-hidden"
-          >
-            <img
-              loading="lazy"
-              src={user.imageUrl}
-              alt={user.title}
-              className="object-cover h-56 sm:h-48 w-full"
-            />
-            <div className="p-6 flex flex-col justify-between flex-1">
-              <div>
-                <p className="text-xs text-[#ABABAB]">{user.category}</p>
-                <h3 className="text-xl sm:text-2xl font-semibold text-[#AAD468] mt-1">
-                  {user.title}
-                </h3>
-                <p className="mt-2 text-sm text-[#ABABAB]">{user.preview}</p>
+      <div className="px-4 sm:px-6 md:px-28 mt-10 my-10 relative">
+        {filteredUsers.length === 0 ? (
+          <p className="text-center text-[#656565] text-lg sm:text-xl font-medium py-20">
+            No projects found for "
+            <span className="text-[#AAD468]">{selectedCategory}</span>"
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {filteredUsers.map((user) => (
+              <div
+                key={user.id}
+                className="rounded-xl shadow-lg shadow-[#4d4d4d] bg-[#001C1C] flex flex-col overflow-hidden"
+              >
+                <img
+                  loading="lazy"
+                  src={user.imageUrl}
+                  alt={user.title}
+                  className="object-cover h-56 sm:h-48 w-full"
+                />
+                <div className="p-6 flex flex-col justify-between flex-1">
+                  <div>
+                    <p className="text-xs text-[#ABABAB]">{user.category}</p>
+                    <h3 className="text-xl sm:text-2xl font-semibold text-[#AAD468] mt-1">
+                      {user.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-[#ABABAB]">
+                      {user.preview}
+                    </p>
+                  </div>
+                  <div className="flex justify-center mt-4">
+                    <Link to={`/our-work/${user.id}`}>
+                      <button className="bg-white text-[#001C1C] cursor-pointer text-sm px-4 py-2 rounded-3xl hover:bg-[#F9F9F9] transition-colors">
+                        View Project
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-center mt-4">
-                <Link to={`/ourWork/${user.id}`}>
-                  <button className="bg-white text-[#001C1C] cursor-pointer text-sm px-4 py-2 rounded-3xl hover:bg-[#F9F9F9] transition-colors">
-                    View Project
-                  </button>
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
 
       {/* Footer */}
