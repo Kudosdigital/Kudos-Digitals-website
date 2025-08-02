@@ -1,28 +1,37 @@
-import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProjectInfo from "./pages/ProjectInfo";
+import { Suspense, lazy } from "react";
+import AppLoader from "./components/shared/AppLoader";
 import NotFound from "./pages/NotFound";
 
-const Home = lazy(() => import("./pages/Home"));
-const JoinUs = lazy(() => import("./pages/JoinUs"));
-const JobApplication = lazy(() => import("./pages/JobApplication"));
-const OurWork = lazy(() => import("./pages/OurWork"));
-// const AppLayout = lazy(() => import('./components/appLayout/AppLayout'))
-// const Account = lazy(() => import('./pages/accounts/Account'))
+const routes = [
+  { path: "/", element: lazy(() => import("./pages/Home")) },
+  { path: "/join_us", element: lazy(() => import("./pages/JoinUs")) },
+  { path: "/our_work", element: lazy(() => import("./pages/OurWork")) },
+  { path: "/our_work/:id", element: lazy(() => import("./pages/ProjectInfo")) },
+  {
+    path: "/join_us/:id",
+    element: lazy(() => import("./pages/JobApplication")),
+  },
+  { path: "/our_brand", element: lazy(() => import("./pages/OurBrand")) },
+  { path: "/our_story", element: lazy(() => import("./pages/OurStory")) },
+  {
+    path: "/articles",
+    element: lazy(() => import("./components/ourstory/Articles")),
+  },
+];
 
 const App = () => {
   return (
-    <main>
+    <main className="bg-[#001515] text-[#AAD468] min-h-screen">
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/joinUs" element={<JoinUs />} />
-          <Route path="/ourWork" element={<OurWork />} />
-          <Route path="/ourWork/:id" element={<ProjectInfo />} />
-          <Route path="/joinUs/:id" element={<JobApplication />} />
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<AppLoader message="Loading page..." />}>
+          <Routes>
+            {routes.map(({ path, element: Element }) => (
+              <Route key={path} path={path} element={<Element />} />
+            ))}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </Router>
     </main>
   );

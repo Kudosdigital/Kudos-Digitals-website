@@ -10,7 +10,6 @@ const Footer = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate footer content on load
       gsap.fromTo(
         [servicesRef.current, contentRef.current],
         { opacity: 0, y: 30 },
@@ -23,7 +22,6 @@ const Footer = () => {
         }
       );
 
-      // Continuous marquee animation
       const marqueeContent =
         servicesRef.current?.querySelector(".marquee-content");
       if (marqueeContent) {
@@ -66,7 +64,7 @@ const Footer = () => {
                 key={index}
                 className="flex-shrink-0 flex items-center gap-3"
               >
-                <span className="text-slate-900 font-bold text-lg lg:text-xl">
+                <span className="text-slate-900 font-bold text-base sm:text-lg md:text-xl">
                   {service}
                 </span>
                 <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
@@ -76,9 +74,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Main Footer Section with background blur */}
+      {/* Footer Content with Blur Background */}
       <div className="relative">
-        {/* Blur Image Behind Footer Content */}
         <div className="absolute inset-0 z-10">
           <img
             src={blur_image}
@@ -87,117 +84,91 @@ const Footer = () => {
           />
         </div>
 
-        {/* Main Footer Content */}
         <div
           ref={contentRef}
-          className="relative z-10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10"
+          className="relative z-10 px-4 sm:px-6 lg:px-8 py-8 md:py-12"
         >
-          <div className="max-w-7xl mx-auto">
-            {/* Main CTA Section */}
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-16 lg:mb-20">
-              <div className="mb-8 lg:mb-0">
-                <h2 className="text-4xl sm:text-5xl lg:text-8xl font-bold text-white leading-tight mb-4">
-                  LET'S WORK
+          <div className="mx-auto">
+            {/* Main CTA */}
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-16">
+              <h2 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8 lg:mb-0 max-w-[90%]">
+                LET'S WORK
+                <br />
+                TOGETHER
+              </h2>
+              <button className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-base sm:text-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90">
+                <span className="group-hover:scale-110 transition-transform duration-200 text-center leading-tight">
+                  Share
                   <br />
-                  TOGETHER
-                </h2>
-              </div>
-              <div className="flex-shrink-0">
-                <button className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-lg sm:text-xl lg:text-2xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90">
-                  <span className="group-hover:scale-110 transition-transform duration-200">
-                    Share
-                    <br />
-                    Your
-                    <br />
-                    Ideas
-                  </span>
-                </button>
-              </div>
+                  Your
+                  <br />
+                  Ideas
+                </span>
+              </button>
             </div>
 
-            {/* Contact and Social Links */}
-            <div className="flex flex-col md:flex-row justify-between gap-4">
-              {/* Contact Information */}
+            {/* Contact & Social */}
+            <div className="flex flex-col md:flex-row justify-between gap-8">
               <div>
-                <h3 className="text-[#AAD468] text-xl sm:text-2xl font-bold mb-6">
+                <h3 className="text-[#AAD468] text-xl sm:text-2xl font-bold mb-4">
                   Contact Us
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <a
                     href="mailto:hello@kudosdigitals.com.ng"
-                    className="block text-white text-lg sm:text-xl hover:text-[#AAD468] transition-colors duration-300"
+                    className="block text-white text-base sm:text-lg hover:text-[#AAD468] transition-colors duration-300"
                   >
                     hello@kudosdigitals.com.ng
                   </a>
                   <a
                     href="tel:+2348134419302"
-                    className="block text-white text-lg sm:text-xl hover:text-[#AAD468] transition-colors duration-300"
+                    className="block text-white text-base sm:text-lg hover:text-[#AAD468] transition-colors duration-300"
                   >
                     +234 8134 419 302
                   </a>
                 </div>
               </div>
 
-              {/* Social Media */}
               <div>
-                <h3 className="text-[#AAD468] text-xl sm:text-2xl text-end font-bold mb-6">
+                <h3 className="text-[#AAD468] text-xl sm:text-2xl font-bold mb-4">
                   Follow Us
                 </h3>
-                <div className="flex flex-row-reverse md:flex-row gap-4">
-                  <a
-                    href="#"
-                    aria-label="Follow us on Facebook"
-                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
-                  >
-                    <Facebook className="w-6 h-6 text-white group-hover:text-slate-900 transition-colors duration-300" />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Follow us on LinkedIn"
-                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
-                  >
-                    <Linkedin className="w-6 h-6 text-white group-hover:text-slate-900 transition-colors duration-300" />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Follow us on Twitter/X"
-                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
-                  >
-                    <Twitter className="w-6 h-6 text-white group-hover:text-slate-900 transition-colors duration-300" />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Follow us on Instagram"
-                    className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
-                  >
-                    <Instagram className="w-6 h-6 text-white group-hover:text-slate-900 transition-colors duration-300" />
-                  </a>
+                <div className="flex gap-4 flex-wrap">
+                  {[Facebook, Linkedin, Twitter, Instagram].map((Icon, idx) => (
+                    <a
+                      key={idx}
+                      href="#"
+                      className="w-11 h-11 sm:w-12 sm:h-12 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
+                    >
+                      <Icon className="w-5 h-5 text-white group-hover:text-slate-900 transition-colors duration-300" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className="border-t border-white/20 mt-16 pt-8">
+            {/* Footer Bottom Bar */}
+            <div className="border-t border-white/20 mt-12 pt-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm text-center">
                   © 2025 Kudos Digital. All rights reserved.
                 </p>
-                <div className="flex flex-col md:flex-row text-center gap-6 text-sm">
+                <div className="flex flex-col md:flex-row gap-4 text-sm text-center">
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-lime-400 transition-colors duration-300 underline"
+                    className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Privacy Policy
                   </a>
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-lime-400 transition-colors duration-300 underline"
+                    className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Terms of Service
                   </a>
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-lime-400 transition-colors duration-300 underline"
+                    className="text-gray-400 hover:text-lime-400 underline"
                   >
                     Cookie Settings
                   </a>

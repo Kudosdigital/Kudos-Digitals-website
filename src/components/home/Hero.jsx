@@ -97,7 +97,7 @@ const HeroSection = () => {
 
   return (
     <section ref={heroRef} className="relative overflow-hidden">
-      <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
+      <div className="relative z-10 container mx-auto px-4 py-6 lg:py-24">
         {/* Top Banner */}
         <div ref={subtitleRef} className="flex justify-center mb-12">
           <div className="bg-linear-to-r from-[#AAD468]/60 to-[#495B2D99]/20 backdrop-blur-2xl rounded-full px-6 py-3 border border-white/50 max-w-full">

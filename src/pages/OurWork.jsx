@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Navbar from "../components/shared/Navbar";
-import FooterNew from "../components/shared/FooterNew";
+import Footer from "../components/shared/Footer";
 import { Link } from "react-router";
-import { gsap } from "gsap";
 
 // image imports
 import one from "../assets/1.jpg";
@@ -97,17 +96,19 @@ const OurWork = () => {
         );
 
   return (
-    <div className="bg-[#F9F9F9]">
-      <Navbar className="bg-[#FAFEF3]" />
-      <div className="py-20 bg-[#FAFEF3] px-4 sm:px-6">
-        <h2 className="text-[#001C1C] text-center text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight">
-          Our Work.<span className="text-[#AAD468]"> Our Impact</span>
-        </h2>
-        <p className="text-center text-lg sm:text-xl mt-4 font-[500] text-[#656565] max-w-3xl mx-auto">
-          Explore our diverse portfolio of successful projects that drive
-          results.
-        </p>
-      </div>
+    <main className="bg-[#F9F9F9]">
+      <header>
+        <Navbar className="bg-[#FAFEF3]" />
+        <div className="py-6 md:py-20 bg-[#FAFEF3] px-4 sm:px-6">
+          <h1 className="text-[#001C1C] text-center text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight">
+            Our Work.<span className="text-[#AAD468]"> Our Impact</span>
+          </h1>
+          <p className="text-center text-lg sm:text-xl mt-4 font-[500] text-[#656565] max-w-3xl mx-auto">
+            Explore our diverse portfolio of successful projects that drive
+            results.
+          </p>
+        </div>
+      </header>
 
       {/* Filter Buttons */}
       <div className="py-10 flex flex-wrap gap-3 sm:gap-4 justify-center px-4">
@@ -148,7 +149,7 @@ const OurWork = () => {
               </div>
               <div className="flex justify-center mt-4">
                 <Link to={`/ourWork/${user.id}`}>
-                  <button className="bg-white cursor-pointer text-sm px-4 py-2 rounded-3xl hover:bg-[#F9F9F9] transition-colors">
+                  <button className="bg-white text-[#001C1C] cursor-pointer text-sm px-4 py-2 rounded-3xl hover:bg-[#F9F9F9] transition-colors">
                     View Project
                   </button>
                 </Link>
@@ -159,9 +160,9 @@ const OurWork = () => {
       </div>
 
       {/* Footer */}
-      <FooterNew />
+      <Footer />
       <BackToTop />
-    </div>
+    </main>
   );
 };
 

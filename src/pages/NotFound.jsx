@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e1e1e] via-[#2a2a2a] to-[#1e1e1e] px-4 py-12">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e1e1e] via-[#2a2a2a] to-[#1e1e1e] px-4 py-12">
       <div className="text-center max-w-xl mx-auto bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-10 shadow-xl">
         <h1 className="text-6xl sm:text-7xl font-extrabold text-white mb-6">
           404
@@ -19,7 +19,7 @@ const NotFound = () => {
           Go back home
         </Link>
       </div>
-    </section>
+    </main>
   );
 };
 

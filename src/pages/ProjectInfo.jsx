@@ -24,14 +24,6 @@ const ProjectInfo = () => {
 
   const noInfo = "No more information on this project";
 
-  const tags = [
-    "UI Design",
-    "Event Branding",
-    "Brand Identity",
-    "Website Design",
-    "Flyers & Banner Design",
-  ];
-
   return (
     <div className="bg-[#F9F9F9] min-h-screen">
       <Navbar className="bg-[#FAFEF3]" />

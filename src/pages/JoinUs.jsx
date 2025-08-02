@@ -10,7 +10,7 @@ import BackToTop from "../components/shared/BackToTop";
 
 const JoinUs = () => {
   return (
-    <div
+    <main
       className="relative min-h-screen text-[#AAD468] bg-[#001515]/95 bg-blend-multiply"
       style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -95,7 +95,7 @@ const JoinUs = () => {
       </div>
 
       <BackToTop />
-    </div>
+    </main>
   );
 };
 
