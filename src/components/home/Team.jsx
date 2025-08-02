@@ -476,7 +476,6 @@ const TeamSection = () => {
                           "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=150&fit=crop"
                         }
                         alt={project.title}
-                        loading="lazy"
                         className="w-full h-full object-cover rounded-xl"
                       />
                       <div className="absolute inset-0 bg-black/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

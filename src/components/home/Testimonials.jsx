@@ -70,7 +70,6 @@ const Testimonials = () => {
       {/* Background image container */}
       <div className="relative w-full  mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <img
-          loading="lazy"
           src={background_image}
           alt="background"
           className="absolute inset-0 w-full h-full object-cover rounded-3xl z-0"

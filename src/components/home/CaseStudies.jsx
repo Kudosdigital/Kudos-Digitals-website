@@ -146,7 +146,6 @@ const CaseStudies = () => {
                           {study.description}
                         </p>
                         <img
-                          loading="lazy"
                           src={study.image}
                           alt={study.title}
                           className="w-28 sm:w-48 h-auto object-contain"
@@ -156,13 +155,11 @@ const CaseStudies = () => {
                       <>
                         {/* Decorative Circles */}
                         <img
-                          loading="lazy"
                           src={circle1}
                           alt="circle1"
                           className="absolute bottom-4 right-8 w-30 sm:w-40"
                         />
                         <img
-                          loading="lazy"
                           src={circle2}
                           alt="circle2"
                           className="absolute bottom-8 left-6 w-10 sm:w-16"

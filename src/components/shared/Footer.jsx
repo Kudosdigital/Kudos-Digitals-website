@@ -82,7 +82,6 @@ const Footer = () => {
       <div className="relative">
         <div className="absolute inset-0 z-10">
           <img
-            loading="lazy"
             src={blur_image}
             alt="Blur background"
             className="w-full h-full object-cover"
