@@ -179,7 +179,7 @@ const CaseStudies = () => {
                       </button>
                     ) : (
                       <span className="text-sm text-slate-700 italic">
-                        Hover here →
+                        View Case Study Details →
                       </span>
                     )}
                   </div>

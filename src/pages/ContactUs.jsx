@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/shared/Navbar";
-import FooterNew from "../components/shared/FooterNew";
+import Footer from "../components/shared/Footer";
 import backgroundImage from "../assets/image 3.webp";
 
 const ContactUs = () => {
@@ -439,7 +439,7 @@ const ContactUs = () => {
           </div>
         </section>
 
-        <FooterNew />
+        <Footer />
       </main>
     </>
   );

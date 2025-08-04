@@ -109,7 +109,6 @@ const ShareModal = ({ isOpen, onClose }) => {
 
     if (validateForm()) {
       // Handle form submission here
-      console.log("Form submitted:", formData);
 
       // Reset form
       setFormData({
@@ -271,12 +270,12 @@ const ShareModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-2xl flex items-center justify-center z-[9999] p-4">
-      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh]">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-2xl flex items-center justify-center z-[9999] p-4 text-gray-700">
+      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-[#AAD468]">
-            Share your Idea with Us !
+            Share your Idea with Us!
           </h2>
           <button
             onClick={handleClose}
@@ -288,10 +287,7 @@ const ShareModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="overflow-y-auto p-6 flex-1 space-y-6"
-        >
+        <form onSubmit={handleSubmit} className="p-6 flex-1 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Name */}
             <div>
@@ -307,7 +303,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] placeholder-[#AAD468] focus:border-transparent outline-none transition-colors ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your name"
@@ -331,7 +327,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg placeholder-[#AAD468] focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors ${
                   errors.phoneNumber ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your phone number"
@@ -357,7 +353,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg placeholder-[#AAD468] focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Enter your email"
@@ -382,7 +378,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors"
+                className="w-full px-4 py-3 border border-gray-300 placeholder-[#AAD468] rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors"
                 placeholder="Enter your company name"
               />
             </div>
@@ -401,7 +397,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors appearance-none bg-white ${
+                  className={`w-full px-4 py-3 border rounded-lg placeholder-[#AAD468] focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors appearance-none bg-white ${
                     errors.projectType ? "border-red-500" : "border-gray-300"
                   }`}
                 >
@@ -451,7 +447,7 @@ const ShareModal = ({ isOpen, onClose }) => {
                   value={selectedDate ? selectedDate.toLocaleDateString() : ""}
                   readOnly
                   onClick={() => setShowDatePicker(true)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors cursor-pointer"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 placeholder-[#AAD468] focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors cursor-pointer"
                   placeholder="Select a date"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
@@ -544,7 +540,7 @@ const ShareModal = ({ isOpen, onClose }) => {
               value={formData.projectIdea}
               onChange={handleInputChange}
               rows={5}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors resize-vertical ${
+              className={`w-full px-4 py-3 border rounded-lg placeholder-[#AAD468] focus:ring-2 focus:ring-[#AAD468] focus:border-transparent outline-none transition-colors resize-vertical ${
                 errors.projectIdea ? "border-red-500" : "border-gray-300"
               }`}
               placeholder="Tell us about your project idea, goals, requirements, or any specific details you'd like to share..."

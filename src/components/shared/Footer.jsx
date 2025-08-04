@@ -94,15 +94,15 @@ const Footer = () => {
         >
           <div className="mx-auto">
             {/* Main CTA */}
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-16">
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8 lg:mb-0 max-w-[90%]">
+            <div className="flex flex-row items-start lg:items-center justify-between mb-3 md:mb-8">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8 lg:mb-0 max-w-[90%]">
                 LET'S WORK
                 <br />
                 TOGETHER
               </h2>
               <button
                 aria-label="Share your ideas with Kudos Digitals"
-                className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-base sm:text-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90"
+                className="w-25 h-25 flex-shrink-0 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#F9F871] hover:bg-lime-300 rounded-full flex items-center justify-center text-slate-900 font-bold text-base sm:text-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-lime-400/50 group shadow-2xl shadow-[#36510D]/90"
               >
                 <span className="group-hover:scale-110 transition-transform duration-200 text-center leading-tight">
                   Share
@@ -146,14 +146,32 @@ const Footer = () => {
                   aria-label="Social media links"
                 >
                   {[
-                    { Icon: Facebook, label: "Follow us on Facebook" },
-                    { Icon: Linkedin, label: "Connect with us on LinkedIn" },
-                    { Icon: Twitter, label: "Follow us on Twitter" },
-                    { Icon: Instagram, label: "Follow us on Instagram" },
-                  ].map(({ Icon, label }, idx) => (
+                    {
+                      Icon: Facebook,
+                      label: "Follow us on Facebook",
+                      href: "https://www.facebook.com/usekudoshq",
+                    },
+                    {
+                      Icon: Linkedin,
+                      label: "Connect with us on LinkedIn",
+                      href: "https://www.linkedin.com/in/company/usekudoshq",
+                    },
+                    {
+                      Icon: Twitter,
+                      label: "Follow us on X",
+                      href: "https://x.com/usekudoshq",
+                    },
+                    {
+                      Icon: Instagram,
+                      label: "Follow us on Instagram",
+                      href: "https://www.instagram.com/usekudoshq",
+                    },
+                  ].map(({ Icon, label, href }, idx) => (
                     <a
                       key={idx}
-                      href="#"
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label={label}
                       className="w-11 h-11 sm:w-12 sm:h-12 bg-white/10 hover:bg-[#AAD468] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#AAD468]/50 group"
                     >
@@ -172,7 +190,7 @@ const Footer = () => {
                   reserved.
                 </p>
 
-                <div className="flex flex-col md:flex-row gap-4 text-sm text-center">
+                <div className="flex flex-row gap-4 text-[10px] md:text-sm text-center">
                   <a
                     href="#"
                     aria-label="Read our privacy policy"

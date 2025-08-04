@@ -8,6 +8,8 @@ import BackToTop from "../components/shared/BackToTop";
 import TeamCarousel from "../components/ourbrand/TeamCarousel";
 import ShareModal from "../components/shared/ShareModal";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const services = [
   {
@@ -51,7 +53,14 @@ const services = [
 const OurBrand = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.hash === "#our-services") {
+      const section = document.getElementById("our-services");
+      section?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
 
   const handleShareModalOpen = () => {
     setIsShareModalOpen(true);
@@ -155,7 +164,7 @@ const OurBrand = () => {
             {services.map(({ title, icon, description }) => (
               <article
                 key={title}
-                className="bg-white rounded-2xl shadow-lg shadow-[#4d4d4d]/70 p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] hover:shadow-xl min-h-[280px]"
+                className="bg-white rounded-2xl shadow-lg shadow-[#4d4d4d]/70 p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] hover:bg-[#AAD468] min-h-[280px]"
               >
                 <header className="flex items-start justify-between mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#001C1C] underline">
@@ -175,7 +184,10 @@ const OurBrand = () => {
             <h3 className="text-2xl sm:text-3xl font-semibold mb-4 text-[#001C1C]">
               Your idea deserves to be heard.
             </h3>
-            <button onClick={() => navigate("/contact-us")} className="mt-2 px-6 py-3 bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A] text-base sm:text-lg rounded-lg transition cursor-pointer">
+            <button
+              onClick={() => navigate("/contact-us")}
+              className="mt-2 px-6 py-3 bg-[#001C1C] hover:bg-[#262727] text-[#C6E29A] text-base sm:text-lg rounded-lg transition cursor-pointer"
+            >
               Talk to us today
             </button>
           </div>

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { users } from "./OurWork";
 import Navbar from "../components/shared/Navbar";
-import FooterNew from "../components/shared/FooterNew";
+import Footer from "../components/shared/Footer";
 import { useEffect } from "react";
 
 const ProjectInfo = () => {
@@ -102,7 +102,7 @@ const ProjectInfo = () => {
 
       {/* Footer */}
       <div className="bg-[#001C1C] text-[#F9F871]">
-        <FooterNew />
+        <Footer />
       </div>
     </div>
   );

@@ -1,78 +1,98 @@
-import { useEffect } from "react";
-import Navbar from "../../components/shared/Navbar";
-import Footer from "../shared/Footer";
-import BackToTop from "../shared/BackToTop";
-import { useLocation, useNavigate } from "react-router-dom";
-import backgroundImage from "../../assets/image 3.webp";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { PortableText } from "@portabletext/react";
+import { client } from "../lib/sanity";
+import Navbar from "../components/shared/Navbar";
+import Footer from "../components/shared/Footer";
+import BackToTop from "../components/shared/BackToTop";
+import AppLoader from "../components/shared/AppLoader";
+import backgroundImage from "../assets/image 3.webp";
 import { ArrowLeft, UserCircle } from "lucide-react";
+import toast from "react-hot-toast";
 
 const Articles = () => {
-  const location = useLocation();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const article = location.state?.article;
+
+  const [article, setArticle] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setLoading(true);
 
-  // Mock data for demonstration - replace with your actual data
-  const mockAuthor = {
-    name: "Kudos Digitals",
-  };
+    const fetchData = async () => {
+      const fetchedArticle = await client.fetch(
+        `*[_type == "post" && slug.current == $slug][0]{
+          title,
+          publishedAt,
+          mainImage{asset->{url}},
+          tags,
+          body,
+          extendedBody
+        }`,
+        { slug: id }
+      );
+      setArticle(fetchedArticle);
 
-  const mockTags = [
-    "Apple vision pro",
-    "Spatial UI",
-    "UX Design",
-    "visionOS",
-    "AR/VR",
-    "Immersive Technology",
-  ];
+      const fetchedRelatedArticle = await client.fetch(
+        `*[_type == "post" && slug.current != $slug]{
+          title,
+          slug,
+          publishedAt,
+          description,
+          mainImage{asset->{url}}
+        } | order(publishedAt desc)[0...3]`,
+        { slug: id }
+      );
+      setRelatedPosts(fetchedRelatedArticle);
+      setLoading(false);
+    };
 
-  const mockRelatedPosts = [
-    {
-      id: 1,
-      date: "July 18, 2025",
-      title: "The Kudos Story by Kudos Digitals",
-      description:
-        "We are Kudos Digitals Agency, a full-service design agency based in Lagos, Nigeria",
-      image: article.image,
-    },
-    {
-      id: 2,
-      date: "July 18, 2025",
-      title: "The Kudos Story by Kudos Digitals",
-      description:
-        "We are Kudos Digitals Agency, a full-service design agency based in Lagos, Nigeria",
-      image: article.image,
-    },
-    {
-      id: 3,
-      date: "July 18, 2025",
-      title: "The Kudos Story by Kudos Digitals",
-      description:
-        "We are Kudos Digitals Agency, a full-service design agency based in Lagos, Nigeria",
-      image: article.image,
-    },
-  ];
+    fetchData();
+  }, [id]);
+
+  if (loading) return <AppLoader message="Loading article..." />;
 
   if (!article) {
     return (
-      <div className="text-white text-center py-20">
-        <p>No article selected. Please go back and choose one.</p>
-        <button
-          onClick={() => navigate("/")}
-          className="mt-4 bg-lime-600 hover:bg-lime-700 text-white px-4 py-2 rounded"
-        >
-          Go Back
-        </button>
-      </div>
+      <main
+        className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-[#001515]"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <Navbar />
+        <div className="text-[#AAD468] space-y-6 mt-24">
+          <h1 className="text-4xl font-bold">Oops! Article not found.</h1>
+          <p className="text-lg opacity-80 max-w-md">
+            The post you’re looking for might have been removed or doesn't
+            exist.
+          </p>
+          <button
+            onClick={() => navigate("/")}
+            className="bg-lime-600 text-white px-6 py-3 rounded-md hover:bg-lime-700 transition"
+          >
+            Back to Home
+          </button>
+        </div>
+        <Footer />
+      </main>
     );
   }
 
   const handleShare = (platform) => {
     const url = window.location.href;
     const title = article.title;
+
+    const confirm = window.confirm(
+      "You’re about to be redirected to share this article."
+    );
+    if (!confirm) return;
 
     switch (platform) {
       case "twitter":
@@ -99,6 +119,13 @@ const Articles = () => {
       default:
         break;
     }
+
+    toast.success("Opening share window...");
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success("Link copied to clipboard!");
   };
 
   return (
@@ -111,13 +138,9 @@ const Articles = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay */}
       <div
         className="absolute inset-0 z-0"
-        style={{
-          backgroundColor: "#001515",
-          opacity: 0.85,
-        }}
+        style={{ backgroundColor: "#001515", opacity: 0.85 }}
       ></div>
 
       <header className="relative z-10">
@@ -127,27 +150,22 @@ const Articles = () => {
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-white hover:underline mb-6"
           >
-            <ArrowLeft className="w-5 h-5" />
-            Back
+            <ArrowLeft className="w-5 h-5" /> Back
           </button>
           <p className="mt-4 text-lg sm:text-xl font-medium text-[#AAD468]">
-            Published on {article.date}
+            Published on {new Date(article.publishedAt).toDateString()}
           </p>
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-[#AAD468] mb-8">
             {article.title}
           </h1>
-
-          {/* Author Info */}
           <div className="flex items-center gap-3 mb-6">
             <UserCircle className="w-8 h-8" />
-            <span className="text-white">Written by {mockAuthor.name}</span>
+            <span className="text-white">Written by Kudos Digitals</span>
           </div>
-
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {mockTags.map((tag, index) => (
+            {article.tags?.map((tag, i) => (
               <span
-                key={index}
+                key={i}
                 className="bg-[#AAD468] text-black px-3 py-1 rounded-full text-sm font-medium"
               >
                 {tag}
@@ -157,66 +175,17 @@ const Articles = () => {
         </div>
       </header>
 
-      {/* Article Content */}
-      <section className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-white">
-        {/* Article Image */}
-        <img
-          loading="lazy"
-          src={article.image}
-          alt={article.title}
-          className="rounded-3xl w-full mb-8 object-cover h-80"
-        />
-
-        {/* Article Body */}
+      <section className="relative z-5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-white">
         <div className="prose prose-lg prose-invert max-w-none mb-12">
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            {article.description}
-          </p>
-
-          {/* Additional content paragraphs - replace with actual article content */}
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            Designers are now facing a radical shift from flat interfaces to 3D
-            spatial interactions that rely on eye tracking, hand gestures, and
-            voice input. Unlike traditional mobile or desktop UX patterns,
-            visionOS introduces floating windows, responsive UI scaling, and
-            intuitive gesture controls—removing the need for physical input
-            devices entirely.
-          </p>
-
-          <p className="text-gray-300 text-lg leading-relaxed mb-8">
-            As "infinite canvas computing," where apps are no longer confined to
-            screens but live within the user's physical space. Users can place
-            apps side-by-side in mid-air, scale content based on proximity, and
-            navigate environments with just their eyes and fingers.
-          </p>
-
-          <p className="text-gray-300 text-lg leading-relaxed mb-8">
-            "We are entering a new dimension of user experience," said Mike
-            Rockwell, VP of Apple's Technology Development Group. "With
-            visionOS, interaction is no longer about control panels or buttons,
-            but about natural and intuitive immersion."
-          </p>
-
-          <p className="text-gray-300 text-lg leading-relaxed mb-8">
-            The move comes as competitors like Meta and Samsung continue to
-            develop their own extended reality (XR) platforms. However, Apple's
-            developer ecosystem, premium hardware, and design-first approach may
-            give it a critical edge in the mixed reality race.
-          </p>
-
-          <p className="text-gray-300 text-lg leading-relaxed mb-8">
-            Early testers and designers have praised the responsiveness of eye
-            tracking and the realism of spatial UI. However, concerns remain
-            around accessibility, app compatibility, and the learning curve for
-            new users and developers.
-          </p>
-
-          <p className="text-gray-300 text-lg leading-relaxed mb-12">
-            As Apple continues to roll out updates and expand access to its
-            Vision Pro SDK, design professionals are urged to start learning
-            spatial UX principles. From 3D interface modeling to voice-gesture
-            fusion, the future of UI design may no longer be flat.
-          </p>
+          <PortableText value={article.body} />
+          {article.mainImage?.asset?.url && (
+            <img
+              src={article.mainImage.asset.url}
+              alt={article.title}
+              className="rounded-3xl w-full my-10 object-cover h-80"
+            />
+          )}
+          <PortableText value={article.extendedBody} />
         </div>
 
         {/* Share Section */}
@@ -264,11 +233,9 @@ const Articles = () => {
                 </svg>
               </button>
               <button
+                onClick={handleCopyLink}
                 className="w-10 h-10 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
                 aria-label="Copy link"
-                onClick={() =>
-                  navigator.clipboard.writeText(window.location.href)
-                }
               >
                 <svg
                   className="w-5 h-5 text-white"
@@ -295,29 +262,26 @@ const Articles = () => {
           Related Posts
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockRelatedPosts.map((post) => (
+          {relatedPosts.map((post, i) => (
             <article
-              key={post.id}
+              key={i}
               className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 cursor-pointer"
-              onClick={() =>
-                navigate("/articles", { state: { article: post } })
-              }
+              onClick={() => navigate(`/articles/${post.slug.current}`)}
             >
               <img
-                loading="lazy"
-                src={post.image}
+                src={post.mainImage?.asset?.url}
                 alt={post.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
                 <time className="text-[#AAD468] text-sm font-medium">
-                  {post.date}
+                  {new Date(post.publishedAt).toDateString()}
                 </time>
                 <h3 className="text-white text-xl font-bold mt-2 mb-3 line-clamp-2">
                   {post.title}
                 </h3>
                 <p className="text-gray-300 text-sm line-clamp-3">
-                  {post.description}
+                  {post.description || "Continue reading..."}
                 </p>
                 <button className="mt-4 text-[#AAD468] font-medium hover:underline">
                   Read More →

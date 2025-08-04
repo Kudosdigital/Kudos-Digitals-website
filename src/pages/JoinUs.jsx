@@ -4,7 +4,7 @@ import backgroundImage from "../assets/image 3.webp";
 import Perks from "../components/jobboard/Perks";
 import { BadgeDollarSignIcon, HeartPulse, Laptop, Boxes } from "lucide-react";
 import JobBar from "../components/jobboard/JobBar";
-import FooterNew from "../components/shared/FooterNew";
+import Footer from "../components/shared/Footer";
 import { jobApplication } from "../components/jobboard/Jobdata";
 import BackToTop from "../components/shared/BackToTop";
 
@@ -97,7 +97,7 @@ const JoinUs = () => {
           </div>
         </section>
 
-        <FooterNew />
+        <Footer />
         <BackToTop />
       </div>
     </main>

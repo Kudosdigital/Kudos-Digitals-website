@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   PenTool,
   BadgeCheck,
@@ -10,7 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import man_woman from "../../assets/Subtract.webp";
 import circle from "../../assets/Ellipse 25.webp";
-import { useNavigate } from "react-router";
+import ShareModal from "../shared/ShareModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +19,7 @@ const WhyUs = () => {
   const titleRef = useRef(null);
   const leftCardRef = useRef(null);
   const rightImageRef = useRef(null);
-  const navigate = useNavigate();
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,6 +71,11 @@ const WhyUs = () => {
 
     return () => ctx.revert();
   }, []);
+
+  const handleShareModalOpen = () => {
+    setIsShareModalOpen(true);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <section
@@ -133,7 +138,7 @@ const WhyUs = () => {
               Our <br /> Services
             </h2>
             <a
-              href="#"
+              href="/our-brand#our-services"
               className="text-sm underline text-[#001515] font-medium"
             >
               More Details...
@@ -171,7 +176,7 @@ const WhyUs = () => {
 
           {/* Chat Button */}
           <button
-            onClick={() => navigate("/contact-us")}
+            onClick={handleShareModalOpen}
             className="absolute -bottom-0 right-2 sm:bottom-4 sm:right-4 md:bottom-3 md:right-10 lg:right-17 bg-[#C6FF7F] text-black rounded-md px-4 py-2 md:px-10 md:py-2 flex items-center gap-2 font-semibold shadow-lg text-xs sm:text-lg cursor-pointer"
           >
             <MessageCircle size={16} />
@@ -179,6 +184,12 @@ const WhyUs = () => {
           </button>
         </div>
       </div>
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+      />
     </section>
   );
 };
