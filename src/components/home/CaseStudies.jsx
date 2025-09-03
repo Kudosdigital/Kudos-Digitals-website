@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDownLeft, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -99,11 +99,14 @@ const CaseStudies = () => {
               Case Studies
             </h2>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-right">
+          <div
+            onClick={() => navigate("/our-work")}
+            className="hidden cursor-pointer hover:underline transition-all md:flex items-center gap-2 text-right"
+          >
             <p className="text-sm font-semibold text-slate-700 mb-1">
               Some of our best works
             </p>
-            <ArrowDownLeft size={40} className="text-slate-800" />
+            <ArrowUpRight size={40} className="text-slate-800" />
           </div>
         </div>
 
@@ -189,15 +192,6 @@ const CaseStudies = () => {
           })}
         </div>
 
-        {/* CTA Button */}
-        <div className="mt-16 flex justify-center">
-          <button
-            onClick={() => navigate("/our-work")}
-            className="bg-lime-400 text-slate-900 px-8 sm:px-10 py-3 rounded-xl font-medium cursor-pointer hover:bg-lime-500 transition-all duration-300"
-          >
-            See More
-          </button>
-        </div>
       </div>
 
       {/* Hide Scrollbar */}

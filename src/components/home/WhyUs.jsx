@@ -95,41 +95,41 @@ const WhyUs = () => {
 
       {/* Floating bubbles with animation */}
       {/* Bubble 1 (largest one) */}
-      <img
+      {/* <img
         loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[23%] left-[80%] sm:top-[15%] sm:left-[62%] md:top-[16%] md:left-[86%] lg:top-[21%] lg:left-[77%] w-10 sm:w-12 md:w-18 lg:w-20 z-0"
-      />
+      /> */}
 
       {/* Bubble 2 (small) */}
-      <img
+      {/* <img
         loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[25%] left-[16%] sm:top-[48%] sm:left-[54%] md:top-[19%] md:left-[14%] lg:top-[26%] lg:left-[53%] w-4 sm:w-6 md:w-10 lg:w-10 z-0"
-      />
+      /> */}
 
       {/* Bubble 3 (medium) */}
-      <img
+      {/* <img
         loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[24%] left-[23%] sm:top-[46%] sm:left-[55%] md:top-[17%] md:left-[21%] lg:top-[24%] lg:left-[56%] w-6 sm:w-8 md:w-12 lg:w-12 z-0"
-      />
+      /> */}
 
       {/* Bubble 4 (tiny) */}
-      <img
+      {/* <img
         loading="lazy"
         src={circle}
         alt="circle"
         className="floating absolute top-[26%] left-[21%] sm:top-[44%] sm:left-[53%] md:top-[21%] md:left-[20%] lg:top-[29%] lg:left-[55%] w-3 sm:w-4 md:w-7 lg:w-6 z-0"
-      />
+      /> */}
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 px-4">
+      {/* <div className="relative z-10 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-20 px-4"> */}
         {/* Left Card */}
-        <div
+        {/* <div
           ref={leftCardRef}
           className="bg-gradient-to-b from-[#EAFFC8] to-[#B3FF3C] rounded-xl w-full max-w-2xl lg:max-w-md lg:h-[550px] p-8 flex flex-col justify-between text-[#001515]"
         >
@@ -143,10 +143,10 @@ const WhyUs = () => {
             >
               More Details...
             </a>
-          </div>
+          </div> */}
 
           {/* Pills */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-10">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-10">
             <div className="flex items-center gap-2 bg-black text-[#C6FF7F] px-3 py-2 rounded-full text-sm font-medium">
               <LayoutDashboard size={16} /> MVP Design
             </div>
@@ -160,10 +160,10 @@ const WhyUs = () => {
               <BadgeCheck size={16} /> Brand Identity
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Right Image Card */}
-        <div
+        {/* <div
           ref={rightImageRef}
           className="relative w-full max-w-2xl h-auto lg:h-[550px] flex items-center justify-center"
         >
@@ -172,24 +172,24 @@ const WhyUs = () => {
             src={man_woman}
             alt="collaboration"
             className="w-auto h-full object-cover rounded-tr-md rounded-bl-md"
-          />
+          /> */}
 
           {/* Chat Button */}
-          <button
+          {/* <button
             onClick={handleShareModalOpen}
             className="absolute -bottom-0 right-2 sm:bottom-4 sm:right-4 md:bottom-3 md:right-10 lg:right-17 bg-[#C6FF7F] text-black rounded-md px-4 py-2 md:px-10 md:py-2 flex items-center gap-2 font-semibold shadow-lg text-xs sm:text-lg cursor-pointer"
           >
             <MessageCircle size={16} />
             Let’s chat
-          </button>
-        </div>
-      </div>
+          </button> */}
+        {/* </div>
+      </div> */}
 
       {/* Share Modal */}
-      <ShareModal
+      {/* <ShareModal
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
-      />
+      /> */}
     </section>
   );
 };

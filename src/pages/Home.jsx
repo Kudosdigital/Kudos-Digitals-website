@@ -37,9 +37,9 @@ const Home = () => {
           <Hero />
           <CaseStudies />
           <WhyUs />
-          <Team />
+          {/* <Team /> */}
           <Stats />
-          <OurDna />
+          {/* <OurDna /> */}
           <Testimonials />
           <Footer />
         </div>

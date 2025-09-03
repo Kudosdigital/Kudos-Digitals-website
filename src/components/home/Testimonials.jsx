@@ -80,7 +80,7 @@ const Testimonials = () => {
           <img
             src={background_image}
             alt="background"
-            className="absolute inset-0 w-full h-full object-cover rounded-3xl z-0"
+            className="absolute inset-0 w-full h-full object-contain rounded-3xl z-0"
           />
 
           {/* Overlay content */}
@@ -123,7 +123,7 @@ const Testimonials = () => {
             </div>
 
             {/* Navigation Buttons (bottom-right of image area) */}
-            <div className="absolute -bottom-6 right-21 sm:-bottom-8 sm:right-4 lg:right-16 lg:-bottom-14 flex mx-auto gap-6 z-20">
+            <div className="absolute w-full translate-y-[47%] translate-x-[60%] flex mx-auto gap-6 z-20">
               <button
                 onClick={prevTestimonial}
                 className="w-12 h-12 cursor-pointer sm:w-18 sm:h-18 bg-lime-400 hover:bg-lime-300 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-lime-400/50 group"

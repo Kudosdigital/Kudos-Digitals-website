@@ -10,6 +10,7 @@ import ShareModal from "../components/shared/ShareModal";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import OurDna from "../components/home/OurDna";
 
 const services = [
   {
@@ -97,7 +98,7 @@ const OurBrand = () => {
               loading="lazy"
               src={team}
               alt="Kudos team at work"
-              className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl shadow-lg shadow-[#4d4d4d]"
+              className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl"
             />
             <div className="space-y-6 md:text-lg leading-relaxed md:w-1/2 text-center md:text-start">
               <p>
@@ -142,7 +143,7 @@ const OurBrand = () => {
               loading="lazy"
               src={team2}
               alt="Kudos team collaborating"
-              className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl shadow-lg shadow-[#4d4d4d]"
+              className="w-full md:w-[540px] md:h-[500px] object-cover rounded-2xl"
             />
           </div>
         </section>
@@ -164,7 +165,7 @@ const OurBrand = () => {
             {services.map(({ title, icon, description }) => (
               <article
                 key={title}
-                className="bg-white rounded-2xl shadow-lg shadow-[#4d4d4d]/70 p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] hover:bg-[#AAD468] min-h-[280px]"
+                className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 hover:scale-[1.01] hover:bg-[#AAD468] min-h-[280px]"
               >
                 <header className="flex items-start justify-between mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#001C1C] underline">
@@ -192,6 +193,8 @@ const OurBrand = () => {
             </button>
           </div>
         </section>
+
+        <OurDna />
 
         {/* Meet our Team Section */}
         <section

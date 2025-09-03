@@ -80,7 +80,7 @@ const Stats = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 px-4 sm:px-8">
+    <section ref={sectionRef} className="mb-32 px-4 sm:px-8">
       <div className="max-w-8xl mx-auto flex flex-col sm:flex-row w-full justify-evenly gap-8 text-white text-center">
         {stats.map((stat, index) => (
           <div

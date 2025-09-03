@@ -73,8 +73,8 @@ const OurDna = () => {
         ref={titleRef}
         className="w-full pb-6 text-center z-10 opacity-0 translate-y-8"
       >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3">
-          What <span className="text-[#C6FF7F]">is imprinted in our DNA?</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black mb-3">
+          What <span className="text-[#AAD468]">is imprinted in our DNA?</span>
         </h2>
         <p className="text-white text-sm sm:text-base max-w-2xl mx-auto">
           At Kudos Digitals Agency, we believe in fostering a culture of
@@ -89,11 +89,11 @@ const OurDna = () => {
           className="space-y-6 opacity-0 -translate-x-10"
         >
           {/* Mission Card */}
-          <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-white flex flex-col">
+          <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-[#AAD468] flex flex-col">
             <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold mb-2">
               Mission:
             </h2>
-            <p className="text-gray-300 text-lg mb-6 sm:mb-8 mt-auto">
+            <p className="text-black text-lg mb-6 sm:mb-8 mt-auto">
               To empower businesses by transforming their digital visions into
               tangible success through end-to-end design, development, and
               deployment solutions.
@@ -101,11 +101,11 @@ const OurDna = () => {
           </div>
 
           {/* Vision Card */}
-          <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-white flex flex-col">
+          <div className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 h-72 sm:min-h-80 border border-[#AAD468] flex flex-col">
             <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold mb-2">
               Vision:
             </h2>
-            <p className="text-gray-300 text-lg mb-6 sm:mb-8 mt-auto">
+            <p className="text-black text-lg mb-6 sm:mb-8 mt-auto">
               To be a leading force in digital transformation, consistently
               setting benchmarks in design innovation and strategic deployment
               excellence.
@@ -116,7 +116,7 @@ const OurDna = () => {
         {/* Right Column */}
         <div
           ref={rightColumnRef}
-          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-white overflow-y-auto opacity-0 translate-x-10"
+          className="bg-white/10 backdrop-blur-3xl rounded-3xl p-6 sm:p-8 border border-[#AAD468] overflow-y-auto opacity-0 translate-x-10"
         >
           <h2 className="text-[#AAD468] text-2xl sm:text-3xl font-bold">
             Our Values
@@ -130,7 +130,7 @@ const OurDna = () => {
               "Client Success: Prioritizing our clients' growth and celebrating their achievements as our own.",
               "Integrity: Operating with honesty, transparency, and ethical conduct in all interactions.",
             ].map((text, idx) => (
-              <p key={idx} className="text-gray-300 text-lg">
+              <p key={idx} className="text-black text-lg">
                 {text}
               </p>
             ))}

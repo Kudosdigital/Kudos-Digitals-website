@@ -30,72 +30,6 @@ const teamMembers = [
     image: teamMember4,
     linkedin: "#",
   },
-  {
-    name: "Ifeoluwa OBASA",
-    role: "Human Resources Manager",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Oreoluwa ALABA",
-    role: "Frontend Developer",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Pelumi LAST",
-    role: "Frontend Developer",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Marvellous LAST",
-    role: "Frontend Developer",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Richard LAST",
-    role: "Frontend Developer",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Lovelyn EJIKEME",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Akanbi OLUWO",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Caroline NIKORO",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Comfort ETIM",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Eucharia DURU",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
-  {
-    name: "Success LAST",
-    role: "INSERT ROLE HERE",
-    image: "",
-    linkedin: "#",
-  },
 ];
 
 const cardBaseWidth = 200;
@@ -167,10 +101,10 @@ const TeamCarousel = () => {
   }, []);
 
   return (
-    <section className="py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F6FCE8] relative">
+    <section className=" py-14 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F6FCE8] relative">
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-6 pr-[100px] w-full"
+        className="flex flex-row justify-center gap-5 overflow-x-auto scrollbar-hide scroll-smooth pb-6 w-full"
         style={{ WebkitOverflowScrolling: "touch" }} // makes sure iOS scroll feels native
       >
         {teamMembers.map((member, index) => (
@@ -211,7 +145,7 @@ const TeamCarousel = () => {
       </div>
 
       {/* Pagination Indicators */}
-      <div className="flex justify-center mt-6 space-x-2">
+      {/* <div className="flex justify-center mt-6 space-x-2">
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
             key={i}
@@ -221,7 +155,7 @@ const TeamCarousel = () => {
             }`}
           ></button>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
